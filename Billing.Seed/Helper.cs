@@ -9,7 +9,7 @@ namespace Billing.Seed
     {
         public static UnitOfWork Context = new UnitOfWork();
         
-        public static string SourceRoot = @"C:\Users\HP\Documents\GitHub\alpha\billing.xls";
+        public static string SourceRoot = @"C:\BillingTraining\billingtraining\billing.xls";
 
         
 
