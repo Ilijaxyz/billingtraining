@@ -1,0 +1,25 @@
+<div ng-show="showCustomer">
+      <table style="border:solid 1px blue">
+        <tr><td align="right">Id: </td><td><b>{{ customer.id }}</b></td></tr>
+        <tr><td align="right">Name: </td><td><input type="text" ng-model="customer.name"></td></tr>
+        <tr><td align="right">Address: </td><td><input type="text" ng-model="customer.address"></td></tr>
+        <tr><td align="right">Town: </td><td><input type="text" ng-model="customer.town"></td></tr>
+        <tr><td align="right">TownId: </td><td><input type="number" ng-model="customer.townId"></td></tr>
+        <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
+    </table>
+</div>
+
+
+<div class="row" ng-repeat="customer in customers">
+    <div class="col-md-1">{{ customer.id }}</div>
+    <div class="col-md-2">{{ customer.name }}</div>
+    <div class="col-md-2">{{ customer.address }}</div>
+    <div class="col-md-2">{{ customer.town }}</div>
+    <div class="col-md-2">{{ customer.townId }}</div>
+    <div class="col-md-1"><a href="" ng-click="edit(customer)">edit</a></div>
+    <button ng-click="delete(customer)">DELETE</button>
+
+</div>
+<button ng-click="new()">NEW CUSTOMER</button>
+
+

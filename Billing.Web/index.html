@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="Billing">
+
+  <head>
+      <meta charset="windows-1250">
+      <link rel="stylesheet" href="styles/bootstrap.css">
+      <link rel="stylesheet" href="styles/modal.css">
+      <script src="library/angular.min.js"></script>
+      <script src="library/angular-route.min.js"></script>
+      <script src="library/angular-local-storage.min.js"></script>
+      <script src="scripts/app.js"></script>
+      <script src="scripts/controllers/AgentsCtrl.js"></script>
+      <script src="scripts/controllers/CustomersCtrl.js"></script>
+      <script src="scripts/controllers/CategoriesCtrl.js"></script>
+      <script src="scripts/controllers/SuppliersCtrl.js"></script>
+      <script src="scripts/controllers/ShippersCtrl.js"></script>
+      <script src="scripts/controllers/ItemsCtrl.js"></script>
+      <script src="scripts/controllers/InvoicesCtrl.js"></script>
+      <script src="scripts/controllers/ProductsCtrl.js"></script>
+      <script src="scripts/controllers/ProcurementsCtrl.js"></script>
+      <script src="scripts/controllers/StockCtrl.js"></script>
+      <script src="scripts/services/DataService.js"></script>
+      <script src="scripts/controllers/LoginCtrl.js"></script>
+      <script src="scripts/services/LoginService.js"></script>
+      <script src="scripts/directives/PartnerDirective.js"></script>
+      <script src="scripts/directives/ModalDirective.js"></script>
+  </head>
+
+  <body>
+  <header>
+      <div class="container">
+          <div><h2>Billing Application
+              <span ng-show="currentUser">
+                  --- {{ currentUser }} [<a href="#/logout">Logout</a>]
+              </span></h2></div>
+          <div><a href="#/agents">Agents</a> |
+               <a href="#/customers">Customers</a> |
+               <a href="#/categories">Categories</a> |
+               <a href="#/items">Items</a> |
+               <a href="#/invoices">Invoices</a> |
+               <a href="#/suppliers">Suppliers</a> |
+               <a href="#/shippers">Shippers</a>   |
+               <a href="#/products">Products</a>   |
+               <a href="#/stock">Stocks</a>        |
+               <a href="#/procurements">Procurements</a>                
+          </div>
+          <hr>
+      </div>
+  </header>
+
+  <div class="container"><div ng-view autoscroll="true"></div></div>
+
+  </body>
+</html>
+
+
+
+
+
