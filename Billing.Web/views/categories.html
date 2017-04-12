@@ -1,0 +1,17 @@
+<div ng-show="showCategorie">
+    <table style="border:solid 1px blue">
+        <tr><td align="right">Id: </td><td><b>{{ categorie.id }}</b></td></tr>
+        <tr><td align="right">Name: </td><td><input type="text" ng-model="categorie.name"></td></tr>
+        <tr><td align="right">Product: </td><td><input type="number" ng-model="categorie.product"></td></tr>
+        <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
+    </table>
+</div>
+
+<div class="row" ng-repeat="categorie in categories">
+    <div class="col-md-1">{{ categorie.id }}</div>
+    <div class="col-md-2">{{ categorie.name }}</div>
+    <div class="col-md-2">{{ categorie.product }}</div>
+    <div class="col-md-1"><a href="" ng-click="getCategorie(categorie)">edit</a></div>
+    <button ng-click="delete(categorie)">DELETE</button> 
+</div>
+<button ng-click="new()">NEW Categorie</button>

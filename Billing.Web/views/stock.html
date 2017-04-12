@@ -1,0 +1,26 @@
+ <div id="sortFilter">Sort by: <select ng-model="$parent.sort">
+        <option value="id">Id</option>
+        <option value="-id">Id desc</option>
+    </select>
+        Filter: <input type="search" ng-model="$parent.selector"> <i class="fa fa-filter" aria-hidden="true"></i>
+ </div>
+
+<hr>
+
+<div style="border:solid 1px blue" ng-show="showStock">
+    <div>Id: <b>{{ stock.id }}</b></div>
+    <div>Input: <b>{{ stock.input }}</b></div>
+    <div>Output: <b>{{ stock.output }}</b></div>
+    <div>Inventory: <b>{{ stock.inventory }}</b></div>
+    <div>Product name: <b>{{ stock.product.name }}</b></div>
+</div>
+
+<hr>
+<div class="row" ng-repeat="item in stock | filter:selector | orderBy:sort">
+    <partner partner-data="stock"></partner>
+    <div class="col-md-2">{{ item.id }}</div>
+    <div class="col-md-2">{{ item.inventory }}</div>  
+    <div class="col-md-2">{{ item.product.name }}</div>    
+    <div class="col-md-2">
+        <a href="" ng-click="getStock(item)">GET</a></div>
+</div>

@@ -1,0 +1,20 @@
+<div ng-show="showShipper">
+    <table style="border:solid 1px blue">
+        <tr><td align="right">Id: </td><td><b>{{ shipper.id }}</b></td></tr>
+        <tr><td align="right">Name: </td><td><input type="text" ng-model="shipper.name"></td></tr>
+        <tr><td align="right">Address: </td><td><input type="text" ng-model="shipper.address"></td></tr>
+        <tr><td align="right">Town: </td><td><select ng-model="shipper.townId" ng-options="town.id as town.name for town in towns"></select></td></tr>
+        <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
+    </table>
+</div>
+
+<div ng-include="'views/navigator.html'"></div>
+
+<div ng-repeat="shipper in shippers | filter:selector | orderBy:sort">
+    <div class="col-md-1">{{ shipper.id }}</div>
+    <div class="col-md-2">{{ shipper.name }}</div>
+    <div class="col-md-2">{{ shipper.address }}</div>
+    <div class="col-md-2">{{ shipper.town }}</div>
+    <div class="col-md-1"><a href="" ng-click="getShipper(shipper)">edit</a></div>
+    <button ng-click="delete(shipper)">DELETE</button>   
+</div>

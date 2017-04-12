@@ -1,0 +1,33 @@
+<div ng-show="showProcurement">
+    <table style="border:solid 1px blue">
+        <tr><td align="right">Id: </td><td><b>{{ procurement.id }}</b></td></tr>
+        <tr><td align="right">Date: </td><td><input type="datetime" ng-model="procurement.date"></td></tr>
+        <tr><td align="right">Document: </td><td><input type="text" ng-model="procurement.document"></td></tr>
+        <tr><td align="right">Quantity: </td><td><input type="number" ng-model="procurement.quantity"></td></tr>
+        <tr><td align="right">Price: </td><td><input type="number" ng-model="procurement.price"></td></tr>
+        <tr><td align="right">Total: </td><td><input type="number" ng-model="procurement.total"></td></tr>
+        <tr><td align="right">Supplier: </td><td><input type="text" ng-model="procurement.supplier"></td></tr>
+        <tr><td align="right">SupplierId: </td><td><input type="text" ng-model="procurement.supplierId"></td></tr>
+        <tr><td align="right">Product: </td><td><input type="text" ng-model="procurement.product"></td></tr>
+        <tr><td align="right">ProductId: </td><td><input type="text" ng-model="procurement.productId"></td></tr>
+        
+        <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
+    </table>
+</div>
+
+<div class="row" ng-repeat="procurement in procurements">
+    <div class="col-md-1">{{ procurement.id }}</div>
+    <div class="col-md-2">{{ procurement.date }}</div>
+    <div class="col-md-2">{{ procurement.document }}</div>
+    <div class="col-md-2">{{ procurement.quantity }}</div>
+    <div class="col-md-2">{{ procurement.price }}</div>
+    <div class="col-md-2">{{ procurement.total }}</div>
+    <div class="col-md-2">{{ procurement.supplier }}</div>
+    <div class="col-md-2">{{ procurement.supplierId }}</div>
+    <div class="col-md-2">{{ procurement.product }}</div>
+    <div class="col-md-2">{{ procurement.productId }}</div>
+    <div class="col-md-1"><a href="" ng-click="edit(procurement)">edit</a></div>
+    <button ng-click="delete(procurement)">DELETE</button>
+
+</div>
+<button ng-click="new()">NEW PROCUREMENT</button>
