@@ -1,8 +1,6 @@
-2017-04-11 10:19:04,458 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:30:25,786 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:34:28,226 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:36:34,134 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:36:59,038 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 23:37:19,237 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-13 00:53:04,476 | ERROR | The model backing the 'BillingContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).: http://localhost:59959/api/agents
-2017-04-13 00:53:04,852 | ERROR | The model backing the 'BillingContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).: http://localhost:59959/api/agents
+2017-04-14 11:53:39,784 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/procurements
+2017-04-14 11:54:36,437 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/procurements
+2017-04-14 12:05:23,866 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/procurements
+2017-04-14 12:16:21,970 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/procurements
+2017-04-14 13:15:53,130 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/procurements
+2017-04-14 13:32:34,605 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/procurements

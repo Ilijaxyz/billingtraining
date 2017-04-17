@@ -1,0 +1,73 @@
+
+
+
+<div class="row">
+    <div class="col-md-1"><b>Id</b></div>
+    <div class="col-md-1"><b>Date</b></div>
+    <div class="col-md-1"><b>Document</b></div>
+    <div class="col-md-1"><b>Quantity</b></div>
+    <div class="col-md-1"><b>Price</b></div>
+    <div class="col-md-1"><b>Total</b></div>
+    <div class="col-md-1"><b>Supplier</b></div>
+    <!--<div class="col-md-1"><b>Sup_id</b></div>-->
+    <div class="col-md-1"><b>Product</b></div>
+    <!--<div class="col-md-1"><b>Pro_id</b></div>-->
+    <a href="" ng-click="new()">CREATE NEW</a>
+</div>
+
+
+
+
+<div class="row" ng-repeat="procurement in procurements">
+    <div class="col-md-1">{{ procurement.id }}</div>
+    <div class="col-md-1">{{ procurement.date }}</div>
+    <div class="col-md-1">{{ procurement.document }}</div>
+    <div class="col-md-1">{{ procurement.quantity }}</div>
+    <div class="col-md-1">{{ procurement.price }}</div>
+    <div class="col-md-1">{{ procurement.total }}</div>
+    <div class="col-md-1">{{ procurement.supplier }}</div>
+    <!--<div class="col-md-1">{{ procurement.supplierId }}</div>-->
+    <div class="col-md-1">{{ procurement.product }}</div>
+    <!--<div class="col-md-1">{{ procurement.productId }}</div>-->
+    <a href="" ng-click="edit(procurement)">Edit</a> |
+    <a href="" ng-click="delete(procurement)">DELETE</a>
+
+</div>
+
+
+<modal-dialog show='modalShown'>
+
+    
+         <div class="modal-body">
+            <form role="form">
+                <div class="form-group">
+                    <label class="hidden">ID</label><input type="hidden" class="form-control" ng-model="procurement.id"
+                                            ng-disabled="item.id"/>
+    <div class="form-group">
+                    <label>Date</label><input type="date" class="form-control" ng-model="procurement.date"/>
+   <!-- <div>Document: </div>
+    <div>  <input type="text" ng-model="procurement.document" size="10"></div>-->
+   <div class="form-group">
+                    <label>Quantity</label><input type="number" class="form-control" ng-model="procurement.quantity"/>
+                </div>
+    <div class="form-group">
+                    <label>Price</label><input type="number" class="form-control" ng-model="procurement.price"/>
+    <div class="form-group">
+                    <label>Total</label><input type="number" class="form-control" ng-model="procurement.total"/>
+                </div>
+    <div class="form-group">
+                    <label>Supplier</label>
+                    <select ng-model="procurements.supplierId" class="form-control"
+                            ng-options="supplier.id as supplier.name for supplier in suppliers"></select>
+                </div>
+        <!--<div>SupplierId:<input type="text" ng-model="procurement.supplierId"></div>-->
+    <div class="form-group">
+                    <label>Product</label>
+                    <select ng-model="procurements.productId" class="form-control"
+                            ng-options="product.id as product.name for product in products"></select>
+                </div>
+        <!--<div>ProductId:<input type="text" ng-model="procurement.productId"></div>-->
+        
+    <div><hr style="float:right"><button ng-click="save()">SAVE</button></div>
+    <!--</div>-->
+</modal-dialog>

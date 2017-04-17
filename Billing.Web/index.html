@@ -3,9 +3,15 @@
 
   <head>
       <meta charset="windows-1250">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="styles/bootstrap.css">
       <link rel="stylesheet" href="styles/modal.css">
       <script src="library/angular.min.js"></script>
+      <link rel="stylesheet" href="styles/style.css">
       <script src="library/angular-route.min.js"></script>
       <script src="library/angular-local-storage.min.js"></script>
       <script src="scripts/app.js"></script>
@@ -24,6 +30,8 @@
       <script src="scripts/services/LoginService.js"></script>
       <script src="scripts/directives/PartnerDirective.js"></script>
       <script src="scripts/directives/ModalDirective.js"></script>
+    
+
   </head>
 
   <body>
@@ -33,17 +41,27 @@
               <span ng-show="currentUser">
                   --- {{ currentUser }} [<a href="#/logout">Logout</a>]
               </span></h2></div>
-          <div><a href="#/agents">Agents</a> |
-               <a href="#/customers">Customers</a> |
-               <a href="#/categories">Categories</a> |
-               <a href="#/items">Items</a> |
-               <a href="#/invoices">Invoices</a> |
-               <a href="#/suppliers">Suppliers</a> |
-               <a href="#/shippers">Shippers</a>   |
-               <a href="#/products">Products</a>   |
-               <a href="#/stock">Stocks</a>        |
-               <a href="#/procurements">Procurements</a>                
-          </div>
+
+              <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Home</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li><a href="#/agents">Agents</a></li>
+                    <li><a href="#/customers">Customers</a></li>
+                    <li><a href="#/categories">Categories</a></li>
+                    <li><a href="#/invoices">Invoices</a></li>
+                    <li><a href="#/suppliers">Suppliers</a></li>
+                    <li><a href="#/shippers">Shippers</a></li>
+                    <li><a href="#/products">Products</a></li>
+                    <li><a href="#/stock">Stocks</a></li>
+                    <li><a href="#/procurements">Procurements</a></li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
           <hr>
       </div>
   </header>
