@@ -1,12 +1,14 @@
 (function(){
 
     application.controller("CategoriesCtrl", ['$scope', 'DataService',  function($scope, DataService) {
-        $scope.showCategorie = false;
+        $scope.modalShown=false;
+        //$scope.showCategorie = false;
         ListCategories();
 
         $scope.edit = function(current){
             $scope.categorie = current;
-            $scope.showCategorie = true;
+            $scope.modalShown=true;
+            //$scope.showCategorie = true;
         };
 
         $scope.save = function(){
@@ -14,6 +16,7 @@
                 DataService.insert("categories", $scope.categorie, function(data){ ListCategories();} );
             else
                 DataService.update("categories", $scope.categorie.id, $scope.categorie, function(data){ListCategories();});
+            $scope.modalShown=false;
         };
 
         $scope.delete = function(current){
@@ -29,7 +32,8 @@
                 name: "",
                 product: 0
             };
-            $scope.showCategorie = true;
+            $scope.modalShown=true;
+            //$scope.showCategorie = true;
         };
 
         function ListCategories(){

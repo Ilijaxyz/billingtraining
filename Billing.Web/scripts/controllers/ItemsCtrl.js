@@ -26,16 +26,16 @@
         };
         
         $scope.new = function(){
-          $scope.item = { 
-                    id: 0,
-                    //invoice: "",
-                    //product: "",
-                    quantity: 0,
-                    unit: "",
-                    price: 0,
-                    subTotal: 0,
-                    invoiceId: 0,
-                    productId: 0
+          $scope.item = {
+              id: 0,
+              quantity: 0,
+              price: 0,
+              invoice: "",
+              product: "",
+              unit: "",
+              subTotal: 0,
+              invoiceId: 0,
+              productId: 0
           };  
             $scope.showItem = true;
         };

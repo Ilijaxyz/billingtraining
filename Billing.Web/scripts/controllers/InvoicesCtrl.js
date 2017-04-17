@@ -2,20 +2,25 @@
 (function () {
     application.controller("InvoicesCtrl", ['$scope', 'DataService', function ($scope, DataService) {
 
-        $scope.showInvoice = false;
-        ListInvoices();
+        $scope.modalShown = false;
+        //$scope.showInvoice = false;
+        ListInvoices(0);
+        ListAgents();
+        ListCustomers();
+        ListShipper();
         
         $scope.edit = function (currentInvoice) {
             $scope.invoice = currentInvoice;
-            $scope.showInvoice = true;
+            $scope.modalShown = true;
+            //$scope.showInvoice = true;
         };
 
         $scope.save = function () {
             if ($scope.invoice.id == 0) DataService.insert("invoices", $scope.invoice, function (data) {
-                ListInvoices();
+                ListInvoices($scope.currentPage - 1); 
             });
             else DataService.update("invoices", $scope.invoice.id, $scope.invoice, function (data) {
-                ListInvoices();
+                ListInvoices($scope.currentPage - 1);
             });
         };
         $scope.delete = function (currentInvoice) {
@@ -31,7 +36,6 @@
                     invoiceNo: "",
                     date: new Date(),
                     shippedOn: new Date(),
-                    //status: "OrderCreated",
                     statusId: 0,
                     subTotal: 0,
                     vat: 0,
@@ -41,11 +45,9 @@
                     agentId: 0,   
                     customerId: 0,                  
                     shipping: 0,
-                    //customer: "HROMES D.O.O.",
-                    //agent: "Antonio Banderas",
-                    //shipper: "BH Post"
             };
-            $scope.showInvoice = true;
+             $scope.modalShown = true;
+            //$scope.showInvoice = true;
         };
 
             function getTowns(name){
@@ -54,10 +56,29 @@
                 });
         }
 
-        function ListInvoices() {
-            DataService.list("invoices", function (data) {
-                $scope.invoices = data
+        function ListInvoices(page) {
+            DataService.list("invoices?page=" + page, function (data) {
+                $scope.invoices = data.invoicesList;
+                $scope.totalPages = data.totalPages;
+                $scope.currentPage = data.currentPage + 1;
+                $scope.pages = new Array($scope.totalPages);
+                for (var i=0; i<$scope.totalPages; i++) $scope.pages[i] = i+1;
+                    console.log($scope.currentPage);
             });
+        }
+        $scope.goto = function(page){
+                ListInvoices(page-1);
+            }
+        function ListAgents(agentName){
+            DataService.list("agents/" + name, function(data){$scope.agents = data});
+        }
+
+        function ListCustomers(customerName){
+            DataService.list("customers/"+ name, function(data){$scope.customers = data});
+        }
+
+        function ListShipper(shipperName){
+            DataService.list("shippers/"+ name, function(data){$scope.shippers = data});
         }
     }]);
 }());

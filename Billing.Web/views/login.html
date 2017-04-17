@@ -1,0 +1,47 @@
+<form class="loginform">
+    <link rel="stylesheet" href="../styles/style.css">
+    <div class="logcontainer">
+        <label><strong>Username: </strong></label>
+        <input type="text" placeholder="Enter Username" name="uname" required ng-model="user.name"/>
+
+        <label><strong>Password: </strong></label>
+        <input type="password" placeholder="Enter Password" name="pass" required ng-model="user.pass"/>
+        <button type="submit"class="frmbuttons">LOGIN</button>
+        <button type="submit" class="frmbuttons" ng-click="login()">CANCEL</button>
+        <div><input type="checkbox" checked="checked" ng-model="user.remember"/> Remember me</div>
+    </div>
+</form>
+<form>
+        Login as:<br>
+        <button ng-click="loginAs('marlon')">Marlon</button>
+        <button ng-click="loginAs('julia')">Julia</button>
+        <button ng-click="loginAs('antonio')">Antonio</button>
+        <button ng-click="loginAs('meryl')">Meryl</button>
+        <button ng-click="loginAs('samantha')">Samantha</button>
+        <button ng-click="loginAs('john')">John</button>
+        <button ng-click="loginAs('paul')">Paul</button>
+        <button ng-click="loginAs('kevin')">Kevin</button>
+</form>
+
+
+
+
+<!--<div style="border:solid 1px blue; width:200px; margin:60px auto; padding:12px">
+    <div>Username<br><input type="text" ng-model="user.name"></div>
+    <div style="margin-top:12px;">Password<br><input type="password" ng-model="user.pass"></div>
+    <div style="margin-top: 12px;"><input type='checkbox' ng-model="user.remember"> Remember me!</div>
+    <div style="margin-top: 12px;"><button ng-click="login()">LOG IN</button></div>
+</div>
+
+
+    <div style="width:520px; margin: 12px auto;" ng-show="debug">
+        Login as:<br>
+        <button ng-click="loginAs('marlon')">Marlon</button>
+        <button ng-click="loginAs('julia')">Julia</button>
+        <button ng-click="loginAs('antonio')">Antonio</button>
+        <button ng-click="loginAs('meryl')">Meryl</button>
+        <button ng-click="loginAs('samantha')">Samantha</button>
+        <button ng-click="loginAs('john')">John</button>
+        <button ng-click="loginAs('paul')">Paul</button>
+        <button ng-click="loginAs('kevin')">Kevin</button>
+    </div>-->

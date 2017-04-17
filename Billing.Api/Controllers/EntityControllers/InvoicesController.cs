@@ -13,20 +13,36 @@ namespace Billing.Api.Controllers
     public class InvoicesController : BaseController
     {
         [Route("")]
-        //[TokenAuthorization("user,admin")]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAll(int page = 0)
         {
-            //try
-            //{
+            int PageSize = 12;
+            var query = UnitOfWork.Invoices.Get().OrderBy(x => x.Id).ToList();
+            int TotalPages = (int)Math.Ceiling((double)query.Count() / PageSize);
 
-                return Ok(UnitOfWork.Invoices.Get().ToList().Select(x => Factory.Create(x)).ToList());
-            //}
-            //catch (Exception ex)
-            //{
-            //    Helper.Log(ex.Message, "ERROR");
-            //    return BadRequest(ex.Message);
-            //}
+            var returnObject = new
+            {
+                pageSize = PageSize,
+                currentPage = page,
+                totalPages = TotalPages,
+                invoicesList = query.Skip(PageSize * page).Take(PageSize).Select(x => Factory.Create(x)).ToList()
+            };
+            return Ok(returnObject);
         }
+        //[Route("")]
+        ////[TokenAuthorization("user,admin")]
+        //public IHttpActionResult Get()
+        //{
+        //    //try
+        //    //{
+
+        //        return Ok(UnitOfWork.Invoices.Get().ToList().Select(x => Factory.Create(x)).ToList());
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    Helper.Log(ex.Message, "ERROR");
+        //    //    return BadRequest(ex.Message);
+        //    //}
+        //}
 
         [Route("customer/{id}")]
         public IHttpActionResult GetByCustomer(int id)

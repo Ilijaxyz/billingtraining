@@ -1,10 +1,12 @@
 (function () {
     application.controller("AgentsCtrl", ['$scope', 'DataService', function ($scope, DataService) {
-        $scope.showAgent = false;
+        $scope.modalShown = false;
+        //$scope.showAgent = false;
         ListAgents();
-        $scope.getAgent = function (currentAgent) {
+        $scope.edit = function (currentAgent) {
             $scope.agent = currentAgent;
-            $scope.showAgent = true;
+            $scope.modalShown = true;
+            //$scope.showAgent = true;
         };
         $scope.save = function () {
             if ($scope.agent.id == 0) DataService.insert("agents", $scope.agent, function (data) {
@@ -13,6 +15,7 @@
             else DataService.update("agents", $scope.agent.id, $scope.agent, function (data) {
                 ListAgents();
             });
+            $scope.modalShown = false;
         };
 
         $scope.delete = function(currentAgent){
@@ -26,7 +29,8 @@
                 id: 0, 
                 name: ""
             };
-            $scope.showAgent = true;
+            $scope.modalShown = true;
+            //$scope.showAgent = true;
         };
 
         function ListAgents() {
