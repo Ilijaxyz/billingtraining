@@ -1,23 +1,4 @@
-
-<!--<hr style="border:2px silver solid"><div><hr style=""></div>-->
-
-
-<button ng-click="new()">NEW CUSTOMER</button>
-
-<div class="row" ng-repeat="customer in customers">
-    <div class="col-md-1">{{ customer.id }}</div>
-    <div class="col-md-2">{{ customer.name }}</div>
-    <div class="col-md-2">{{ customer.address }}</div>
-    <div class="col-md-2">{{ customer.town }}</div>
-    <div class="col-md-2">{{ customer.townId }}</div>
-    <div class="col-md-1"><a href="" ng-click="edit(customer)">edit</a></div>
-    <button ng-click="delete(customer)">DELETE</button>
-
-</div>
 <modal-dialog show='modalShown'>
-    
-        
-
         <div class="modal-body">
             <form role="form">
                 <div class="form-group">
@@ -52,38 +33,27 @@
         <button ng-click="save()">SAVE</button>
     
 </modal-dialog>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div ng-show="showCustomer">--><!--</div>-->
-<!--
-<modal-dialog show='modalShown'>
-
-      <table style="border:solid 1px blue">
-        <tr><td align="right">Id: </td><td><b>{{ customer.id }}</b></td></tr>
-        <tr><td align="right">Name: </td><td><input type="text" ng-model="customer.name" size="30"></td></tr>
-        <tr><td align="right">Address: </td><td><input type="text" ng-model="customer.address"></td></tr>
-        <tr><td align="right">Town: </td><td><input type="text" ng-model="customer.town"
-                ng-change="autocomplete(customer.town)"
-                ng-keyup="textUp($event)"></td></tr>
-         <tr><td></td><td></td></tr>
-                    
-        <tr><td align="right">TownId: </td><td><input type="number" ng-model="customer.townId"></td></tr>
-        <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
+<button ng-click="new()" class="btn btn-primary">NEW CUSTOMER</button>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Town</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="customer in customers">
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.address }}</td>
+                <td>{{ customer.town }}</td>
+                <td><button ng-click="edit(customer)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="delete(customer)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
     </table>
-
-</modal-dialog>-->
-
 

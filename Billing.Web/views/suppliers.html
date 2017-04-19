@@ -7,14 +7,37 @@
         <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
     </table>
 </div>
+<!--<div ng-include="'views/navigator.html'"></div>-->
+<button ng-click="new()" class="btn btn-primary">NEW SUPPLIER</button>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Town</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="supplier in suppliers | filter:selector | orderBy:sort">
+            <tr>
+                <td>{{ supplier.id }}</td>
+                <td>{{ supplier.name }}</td>
+                <td>{{ supplier.address }}</td>
+                <td>{{ supplier.town }}</td>
+                <td><button ng-click="edit(supplier)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="delete(supplier)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
+<!--<div ng-include="'views/navigator.html'"></div>-->
 
-<div ng-include="'views/navigator.html'"></div>
-
-<div ng-repeat="supplier in suppliers | filter:selector | orderBy:sort">
+<!--<div ng-repeat="supplier in suppliers | filter:selector | orderBy:sort">
     <div class="col-md-1">{{ supplier.id }}</div>
     <div class="col-md-2">{{ supplier.name }}</div>
     <div class="col-md-2">{{ supplier.address }}</div>
     <div class="col-md-2">{{ supplier.town }}</div>
     <div class="col-md-1"><a href="" ng-click="getSupplier(supplier)">edit</a></div>
     <button ng-click="delete(supplier)">DELETE</button>    
-</div>
+</div>-->

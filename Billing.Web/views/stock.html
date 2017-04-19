@@ -14,13 +14,30 @@
     <div>Inventory: <b>{{ stock.inventory }}</b></div>
     <div>Product name: <b>{{ stock.product.name }}</b></div>
 </div>
-
-<hr>
-<div class="row" ng-repeat="item in stock | filter:selector | orderBy:sort">
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Inventory</th>
+                <th>EDIT</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in stock  | filter:selector | orderBy:sort">
+            <tr>
+                <partner partner-data="stock"></partner>
+                <td>{{ item.id }}</td>
+                <td>{{item.product.name  }}</td>
+                <td>{{ item.inventory }}</td>
+                <td><button ng-click="getStock(item)" class="btn btn-info">GET</button></td>
+            </tr>
+        </tbody>
+    </table>
+<!--<div class="row" ng-repeat="item in stock | filter:selector | orderBy:sort">
     <partner partner-data="stock"></partner>
     <div class="col-md-2">{{ item.id }}</div>
     <div class="col-md-2">{{ item.inventory }}</div>  
     <div class="col-md-2">{{ item.product.name }}</div>    
     <div class="col-md-2">
         <a href="" ng-click="getStock(item)">GET</a></div>
-</div>
+</div>-->

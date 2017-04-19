@@ -8,14 +8,27 @@
         <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
     </table>
 </div>
-
-<div ng-include="'views/navigator.html'"></div>
-
-<div ng-repeat="shipper in shippers | filter:selector | orderBy:sort">
-    <div class="col-md-1">{{ shipper.id }}</div>
-    <div class="col-md-2">{{ shipper.name }}</div>
-    <div class="col-md-2">{{ shipper.address }}</div>
-    <div class="col-md-2">{{ shipper.town }}</div>
-    <div class="col-md-1"><a href="" ng-click="getShipper(shipper)">edit</a></div>
-    <button ng-click="delete(shipper)">DELETE</button>   
-</div>
+<!--<div ng-include="'views/navigator.html'"></div>-->
+<button ng-click="new()" class="btn btn-primary">NEW SHIPPER</button>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Town</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="shipper in shippers | filter:selector | orderBy:sort">
+            <tr>
+                <td>{{ shipper.id }}</td>
+                <td>{{ shipper.name }}</td>
+                <td>{{ shipper.address }}</td>
+                <td>{{ shipper.town }}</td>
+                <td><button ng-click="edit(shipper)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="delete(shipper)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>

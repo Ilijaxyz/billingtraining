@@ -30,14 +30,14 @@ namespace Billing.Tests
             controller.Request.Properties[HttpPropertyKeys.HttpConfigurationKey] = config;
         }
 
-        [TestMethod]
-        public void GetAllInvoices()
-        {
-            TestHelper.InitDatabase();
-            GetReady();
-            var response = controller.Get().ExecuteAsync(CancellationToken.None).Result;
-            Assert.IsNotNull(response.Content);
-        }
+        //[TestMethod]
+        //public void GetAllInvoices()
+        //{
+        //    TestHelper.InitDatabase();
+        //    GetReady();
+        //    var response = controller.Get().ExecuteAsync(CancellationToken.None).Result;
+        //    Assert.IsNotNull(response.Content);
+        //}
 
         [TestMethod]
         public void GetInvoiceById()

@@ -25,6 +25,7 @@ namespace Billing.Api.Controllers
         public IHttpActionResult Get(string name)
         {
             return Ok(UnitOfWork.Products.Get().Where(x => x.Name.Contains(name)).ToList().Select(a => Factory.Create(a)).ToList());
+
         }
 
         [Route("{id:int}")]

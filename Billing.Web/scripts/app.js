@@ -32,16 +32,18 @@
             .when("/procurements", { templateUrl: "views/procurements.html", controller: "ProcurementsCtrl" })
             .when("/login", { templateUrl: "views/login.html", controller: "LoginCtrl" })
             .when("/logout", { template: "", controller: "LogoutCtrl"})
-            .otherwise({ redirectTo: "/agents" });
+            .otherwise({ redirectTo: "/agents" }); //mozda login controller
     }).run(function($rootScope, $location){
         $rootScope.$on("$routeChangeStart", function(event, next, current){
             if(!authenticated()){
                 if(next.templateUrl != "views/login.html"){
                     redirectTo = $location.path();
                     if(redirectTo == "/login") redirectTo = "/agents";
+                    if(redirectTo == "/logout") redirectTo = "/agents";
                     $location.path("/login");
                 }
             }
         })
+		 $rootScope.authenticated=authenticated;
     });
 }());

@@ -25,6 +25,7 @@
                                 localStorageService.set('MistralBilling', credentials.remember, { 'expired': expireDate });
                                 $rootScope.currentUser = credentials.currentUser.name;
                                 $location.path(redirectTo);
+                                $rootScope.showDashboard = false; 
                             },
                             function(reason){
                                 console.log(reason);
@@ -37,8 +38,10 @@
             $scope.loginAs = function(username){
                 $scope.user = { name : username, pass : "billing", remember: true };
                 $scope.login();
+                $rootScope.showDashboard = false;             
             };
-
+            
+            $rootScope.showDashboard = true;
             $scope.login = function() {
                 console.log($scope.user);
                 var userData = LoginService.encode($scope.user.name + ":" + $scope.user.pass);
@@ -62,6 +65,7 @@
                         }
                         $rootScope.currentUser = credentials.currentUser.name;
                         $location.path(redirectTo);
+                        $rootScope.showDashboard = false;
                     },
                     function(reason){
                         credentials.currentUser.id = 0;
