@@ -9,12 +9,31 @@
     </table>
 <!--</div>-->
 </modal-dialog>
+<button ng-click="new()" class="btn btn-primary">NEW CATEGORIE</button>
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="categorie in categories">
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.name }}</td>
+                <td><button ng-click="edit(categorie)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="delete(categorie)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
 
-<div class="row" ng-repeat="categorie in categories">
+<!--<div class="row" ng-repeat="categorie in categories">
     <div class="col-md-1">{{ categorie.id }}</div>
     <div class="col-md-2">{{ categorie.name }}</div>
     <div class="col-md-2">{{ categorie.product }}</div>
     <div class="col-md-1"><a href="" ng-click="edit(categorie)">edit</a></div>
     <button ng-click="delete(categorie)">DELETE</button> 
 </div>
-<button ng-click="new()">NEW Categorie</button>
+<button ng-click="new()">NEW Categorie</button>-->
