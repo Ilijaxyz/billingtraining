@@ -9,8 +9,14 @@
     </table>
 <!--</div>-->
 </modal-dialog>
-<button ng-click="new()" class="btn btn-primary">NEW CATEGORIE</button>
-<table class="table table-bordered">
+<button ng-click="new()" class="btn btn-primary" style="margin-bottom: 10px;">NEW CATEGORIE</button>
+<style>
+.table td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+<table class="table table-bordered" style="counter-reset: serial-number;">
         <thead>
             <tr>
                 <th>#</th>
@@ -21,7 +27,7 @@
         </thead>
         <tbody ng-repeat="categorie in categories">
             <tr>
-                <td>{{ categorie.id }}</td>
+                <td></td>
                 <td>{{ categorie.name }}</td>
                 <td><button ng-click="edit(categorie)" class="btn btn-warning">EDIT</button></td>
                 <td><button ng-click="delete(categorie)" class="btn btn-danger">DELETE</button></td>

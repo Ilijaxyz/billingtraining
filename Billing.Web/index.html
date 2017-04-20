@@ -16,10 +16,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+
       <!-- Latest compiled and minified CSS -->
     <!-- Bootstrap core CSS -->
     <link href="styles/dist/css/bootstrap.min.css" rel="stylesheet">
-
+          
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="styles/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
@@ -35,6 +37,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      <script src="styles/bootstrap.css"></script>
       <link rel="stylesheet" href="styles/modal.css">
       <script src="library/angular.min.js"></script>
       <link rel="stylesheet" href="styles/style.css">
@@ -42,6 +45,7 @@
       <script src="library/angular-local-storage.min.js"></script>
       <script src="scripts/app.js"></script>
       <script src="scripts/controllers/AgentsCtrl.js"></script>
+      <script src="scripts/controllers/AgentsRegionsCtrl.js"></script>
       <script src="scripts/controllers/CustomersCtrl.js"></script>
       <script src="scripts/controllers/CategoriesCtrl.js"></script>
       <script src="scripts/controllers/SuppliersCtrl.js"></script>
@@ -65,12 +69,19 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <span class="icon-bar"></span>       
           <a class="navbar-brand" href="#">Alpha Team Billing App</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" >
+<div class="dropdown" style="float: left; margin-top: 8px;">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reports
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#AgentsByRegion">Agents By Region Report</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#" ng-show="currentUser">{{ currentUser }}</a></li>
@@ -87,6 +98,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="#agents">Agents</a></li>
+            <!--<li><a href="#AgentsByRegion">Agents/Regions</a></li>-->
             <li><a href="#/categories">Catgories</a></li>
             <li><a href="#/customers">Customers</a></li>
             <li><a href="#/invoices">Invoices</a></li>
@@ -99,7 +111,7 @@
         </div>
       </div>
     </div>
-    <div class="container" style="margin-left: 17%; margin-top: 2%;"><div ng-view autoscroll="true"></div></div>  
+    <div class="container" style="margin-left: 10%; margin-top: 2%;"><div ng-view autoscroll="true"></div></div>  
             <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
