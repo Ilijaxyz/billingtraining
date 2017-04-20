@@ -29,6 +29,7 @@
             .when("/suppliers", { templateUrl: "views/suppliers.html", controller: "SuppliersCtrl" })
             .when("/products", { templateUrl: "views/products.html", controller: "ProductsCtrl" })
             .when("/shippers", { templateUrl: "views/shippers.html", controller: "ShippersCtrl" })
+            .when("/AgentsByRegion",{templateUrl:"views/agentsregions.html",controller:"AgentsRegionsCtrl"})
             .when("/procurements", { templateUrl: "views/procurements.html", controller: "ProcurementsCtrl" })
             .when("/login", { templateUrl: "views/login.html", controller: "LoginCtrl" })
             .when("/logout", { template: "", controller: "LogoutCtrl"})

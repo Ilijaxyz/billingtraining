@@ -2,7 +2,7 @@
 (function () {
     application.controller("InvoicesCtrl", ['$scope', 'DataService', function ($scope, DataService) {
 
-        $scope.modalShown = false;
+        $scope.shownInvoices = false;
         //$scope.showInvoice = false;
         ListInvoices(0);
         ListAgents();
@@ -11,7 +11,7 @@
         
         $scope.edit = function (currentInvoice) {
             $scope.invoice = currentInvoice;
-            $scope.modalShown = true;
+            $scope.shownInvoices = true;
             //$scope.showInvoice = true;
         };
 
@@ -45,11 +45,34 @@
                     agentId: 0,   
                     customerId: 0,                  
                     shipping: 0,
+                    items: []
             };
-             $scope.modalShown = true;
+             $scope.shownInvoices = true;
             //$scope.showInvoice = true;
-        };
 
+            //adding items
+            $scope.add = function(){
+                $scope.invoice.items.push({
+                    productId: 0,
+                    quantity: 0,
+                    price: 0,
+                    invoiceId: 0,
+                });
+            };
+                //remowing items
+             $scope.remove = function (index) {
+                    $scope.invoice.items.splice(index, 1);
+                },
+                //total caulculation
+            $scope.total = function () {
+                    var total = 0;
+                    angular.forEach($scope.invoice.items, function (item) {
+                        total += item.quantity * item.price;
+                    })
+                    return total;
+                }
+        };
+        
             function getTowns(name){
                 DataService.list("towns/" + name, function(data){
                     $scope.towns = data;

@@ -33,8 +33,14 @@
         <button ng-click="save()">SAVE</button>
     
 </modal-dialog>
-<button ng-click="new()" class="btn btn-primary">NEW CUSTOMER</button>
-<table class="table table-bordered">
+<button ng-click="new()" class="btn btn-primary" style="margin-bottom: 10px;">NEW CUSTOMER</button>
+<style>
+.table td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+<table class="table table-bordered" style="counter-reset: serial-number;">
         <thead>
             <tr>
                 <th>#</th>
@@ -47,7 +53,7 @@
         </thead>
         <tbody ng-repeat="customer in customers">
             <tr>
-                <td>{{ customer.id }}</td>
+                <td></td>
                 <td>{{ customer.name }}</td>
                 <td>{{ customer.address }}</td>
                 <td>{{ customer.town }}</td>
