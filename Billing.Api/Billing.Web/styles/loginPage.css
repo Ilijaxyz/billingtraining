@@ -1,0 +1,18 @@
+
+
+body { 
+    font-size: 13px; 
+    background: url(../images/8VfZKS.jpg) #0F1F2D no-repeat center center fixed; 
+}
+
+.top-margin { margin-top: 100px; }
+.col-sm-offset-4 col-sm-4{
+        /* background: #C1D5E0; */
+    /* border-style: solid; */
+    border-width: 1px;
+    border-color: #cccccc;
+    padding-top: 15px;
+    /* opacity: 0.90; */
+    border-radius: 10px;
+    color: white;
+}

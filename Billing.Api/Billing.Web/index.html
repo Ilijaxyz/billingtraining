@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="Billing">
+
+  <head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <meta charset="windows-1250">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+
+      <!-- Latest compiled and minified CSS -->
+    <!-- Bootstrap core CSS -->
+    <link href="styles/dist/css/bootstrap.min.css" rel="stylesheet">
+          
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="styles/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/styles/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <script src="styles/bootstrap.css"></script>
+      <link rel="stylesheet" href="styles/modal.css">
+      <script src="library/angular.min.js"></script>
+      <link rel="stylesheet" href="styles/style.css">
+      <script src="library/angular-route.min.js"></script>
+      <script src="library/angular-local-storage.min.js"></script>
+      <script src="scripts/app.js"></script>
+      <script src="scripts/controllers/AgentsCtrl.js"></script>
+      <script src="scripts/controllers/AgentsRegionsCtrl.js"></script>
+      <script src="scripts/controllers/CustomersCtrl.js"></script>
+      <script src="scripts/controllers/CategoriesCtrl.js"></script>
+      <script src="scripts/controllers/SuppliersCtrl.js"></script>
+      <script src="scripts/controllers/ShippersCtrl.js"></script>
+      <script src="scripts/controllers/ItemsCtrl.js"></script>
+      <script src="scripts/controllers/InvoicesCtrl.js"></script>
+      <script src="scripts/controllers/ProductsCtrl.js"></script>
+      <script src="scripts/controllers/ProcurementsCtrl.js"></script>
+      <script src="scripts/controllers/StockCtrl.js"></script>
+      <script src="scripts/services/DataService.js"></script>
+      <script src="scripts/controllers/LoginCtrl.js"></script>
+      <script src="scripts/services/LoginService.js"></script>
+      <script src="scripts/directives/PartnerDirective.js"></script>
+      <script src="scripts/directives/ModalDirective.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-hide="showDashboard">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>       
+          <a class="navbar-brand" href="#">Alpha Team Billing App</a>
+        </div>
+          <ul class="nav navbar-nav navbar-right" >
+<div class="dropdown" style="float: left; margin-top: 8px;">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reports
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#AgentsByRegion">Agents By Region Report</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#" ng-show="currentUser">{{ currentUser }}</a></li>
+            <li><a href="#/logout">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid" ng-hide="showDashboard">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#agents">Agents</a></li>
+            <!--<li><a href="#AgentsByRegion">Agents/Regions</a></li>-->
+            <li><a href="#/categories">Catgories</a></li>
+            <li><a href="#/customers">Customers</a></li>
+            <li><a href="#/invoices">Invoices</a></li>
+            <li><a href="#/products">Products</a></li>
+            <li><a href="#/procurements">Procurements</a></li>
+            <li><a href="#/shippers">Shippers</a></li>
+            <li><a href="#/stock">Stocks</a></li>
+            <li><a href="#/suppliers">Suppliers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-left: 10%; margin-top: 2%;"><div ng-view autoscroll="true"></div></div>  
+            <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="styles/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="styles/docs/dist/js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="styles/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
