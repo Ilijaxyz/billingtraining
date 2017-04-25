@@ -45,7 +45,13 @@
       <script src="library/angular-local-storage.min.js"></script>
       <script src="scripts/app.js"></script>
       <script src="scripts/controllers/AgentsCtrl.js"></script>
+      <!-- reports-->
       <script src="scripts/controllers/AgentsRegionsCtrl.js"></script>
+      <script src="scripts/controllers/SalesByCustomerCtrl.js"></script>
+      <script src="scripts/controllers/SalesByRegionCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/SalesByCategoryCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/SalesByCustomerCategoryCtrl.js"></script>
+      <!--end of reports -->
       <script src="scripts/controllers/CustomersCtrl.js"></script>
       <script src="scripts/controllers/CategoriesCtrl.js"></script>
       <script src="scripts/controllers/SuppliersCtrl.js"></script>
@@ -78,8 +84,10 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <li><a href="#AgentsByRegion">Agents By Region Report</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
+      <li><a href="#SalesByCustomer">Sales By Customer Report</a></li>
+      <li><a href="#SalesByRegion">Sales By Region</a></li>
+      <li><a href="#SalesByCategory">Sales By Category</a></li>
+      <li><a href="#CustomersByCategory">Sales By Customer / Category</a></li>
     </ul>
   </div>
             <li><a href="#">Dashboard</a></li>

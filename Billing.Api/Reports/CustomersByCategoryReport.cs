@@ -2,6 +2,7 @@
 using Billing.Api.Models;
 using Billing.Database;
 using Billing.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,49 +14,24 @@ namespace Billing.Api.Reports
 
         public CustomersCategoryModel Report(RequestModel request)
         {
+            if (request.EndDate <= request.StartDate) throw new Exception("Incorrect Date");
+            List<Item> Items = UnitOfWork.Items.Get().Where(x => x.Invoice.Date >= request.StartDate && x.Invoice.Date <= request.EndDate).ToList();
             CustomersCategoryModel result = new CustomersCategoryModel()
             {
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
-                Title = "Sales by Agents / Regions",
-                Agent = BillingIdentity.CurrentUser.Name
+                GrandTotal = Items.Sum(x => x.SubTotal)
             };
 
-            List<int> categories = UnitOfWork.Categories.Get().Select(x => x.Id).ToList();
+            result.CatRevenue = Items.GroupBy(x => x.Product.Category.Name)
+                                .Select(x => Factory.Create(x.Key, x.Sum(y => y.SubTotal)))
+                                .ToList();
+            var Catquery = result.CatRevenue;
+            int number = result.CatRevenue.Count;
+            result.CusRevenue = Items.GroupBy(x => x.Invoice.Customer.Name)
+                                .Select(x => Factory.Create(x.Key, x.Sum(y => y.SubTotal), Items, number, Catquery, request))
+                                .ToList();
 
-            List<CustomersCategoryModel.InputModel> input;
-            var query = UnitOfWork.Items.Get().Where(x => (x.Invoice.Date >= request.StartDate && x.Invoice.Date <= request.EndDate)).ToList();
-
-            input = query.GroupBy(x => x.Product.Category.Id)
-                         .Select(x => new CustomersCategoryModel.InputModel() { Row = "TOTAL", Column = x.Key, Value = x.Sum(y => y.SubTotal) })
-                         .ToList();
-            CustomersCategoryModel.CustomerModel customer = new CustomersCategoryModel.CustomerModel();
-            customer.Name = "TOTAL";
-            foreach (var cat in categories) customer.Sales[cat] = 0;
-            foreach (var item in input)
-            {
-                customer.Sales[item.Column] = item.Value;
-                customer.Turnover += item.Value;
-            }
-
-            input = query.OrderBy(x => x.Invoice.Customer.Id).ThenBy(x => x.Product.Category.Id)
-                         .GroupBy(x => new { customer = x.Invoice.Customer.Name, category = x.Product.Category.Id })
-                         .Select(x => new CustomersCategoryModel.InputModel { Row = x.Key.customer, Column = x.Key.category, Value = x.Sum(y => y.SubTotal) })
-                         .ToList();
-            foreach (var item in input)
-            {
-                if (customer.Name != item.Row)
-                {
-                    result.Customers.Add(customer);
-                    customer = new CustomersCategoryModel.CustomerModel() { Name = item.Row };
-                    foreach (var cat in categories) customer.Sales[cat] = 0;
-                }
-                customer.Sales[item.Column] = item.Value;
-                customer.Turnover += item.Value;
-            }
-            result.Customers.Add(customer);
-
-            result.Customers = result.Customers.OrderByDescending(x => x.Turnover).ToList();
             return result;
         }
     }

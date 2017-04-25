@@ -1,26 +1,23 @@
 (function(){
-
     application.controller("CustomersCtrl", ['$scope','$rootScope','$anchorScroll', 'DataService',  function($scope,$rootScope,$anchorScroll ,DataService) {
         
         $scope.modalShown = false;
         
         //$scope.showCustomer = false;
-        ListCustomers(0);
+        ListCustomers();
         ListTowns();
         
-
         $scope.edit = function(currentCustomer){
             $scope.customer = currentCustomer;
             $scope.modalShown = true;
             $anchorScroll();
             //$scope.showCustomer = true;
         };
-
         $scope.save = function(){
             if($scope.customer.id == 0)
-                DataService.insert("customers", $scope.customer, function(data){ ListCustomers($scope.currentPage - 1);} );
+                DataService.insert("customers", $scope.customer, function(data){ ListCustomers();} );
             else
-                DataService.update("customers", $scope.customer.id, $scope.customer, function(data){ListCustomers($scope.currentPage - 1);});
+                DataService.update("customers", $scope.customer.id, $scope.customer, function(data){ListCustomers();});
             $scope.modalShown = false;
         };
         $scope.delete = function (currentCustomer) {
@@ -29,7 +26,6 @@
               ListCustomers(); 
           })
         };
-
         $scope.new = function(){
             console.log("adding customer");
             $scope.customer = {
@@ -43,26 +39,9 @@
             
             //$scope.showCustomer = true;
         };
-
-        //start paggination
-                    function ListCustomers(page) {
-            DataService.list("customers?page=" + page, function (data) {
-                $scope.customers = data.customerList;
-                $scope.totalPages = data.totalPages;
-                $scope.currentPage = data.currentPage + 1;
-                $scope.pages = new Array($scope.totalPages);
-                for (var i=0; i<$scope.totalPages; i++) $scope.pages[i] = i+1;
-                    console.log($scope.currentPage);
-            });
-        }
-        $scope.goto = function(page){
-                ListCustomers(page-1);
-            }
-        //end paggination
-
-        // function ListCustomers(){
-        //     DataService.list("customers", function(data){ $scope.customers = data});
-        // } 
+        function ListCustomers(){
+            DataService.list("customers", function(data){ $scope.customers = data});
+        } 
         
         function ListTowns(name){
                 DataService.list("towns/" + name, function(data){
@@ -93,10 +72,6 @@
                 else {
                     document.getElementById('townsel').style.visibility = 'hidden';
                 }
-            };
-        
-        
-        
-       
+            };   
     }]);
 }());

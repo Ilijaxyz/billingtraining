@@ -59,5 +59,33 @@ namespace Billing.Api.Reports
             };
             return result;
         }
+        public CategoryPurchaseModel Create(string Name, double SubTotal)
+        {
+            CategoryPurchaseModel category = new CategoryPurchaseModel()
+            {
+                CategoryName = Name,
+                CategoryTotal = SubTotal
+            };
+            return category;
+        }
+
+        public CustomerPurchaseModel Create(string Name, double SubTotal, List<Item> Items, int number, List<CategoryPurchaseModel> Catquery, RequestModel Request)
+
+        {
+            CustomerPurchaseModel customer = new CustomerPurchaseModel(number)
+            {
+                CustomerName = Name,
+                CustomerTurnover = SubTotal
+            };
+            int i = 0;
+            foreach (var cat in Catquery)
+            {
+                var query = Items.Where(x => x.Invoice.Customer.Name.Equals(customer.CustomerName) && x.Product.Category.Name.Equals(cat.CategoryName) && x.Invoice.Date >= Request.StartDate && x.Invoice.Date <= Request.EndDate).ToList();
+                customer.CategorySales[i] = query.Sum(x => x.SubTotal);
+                i++;
+            }
+
+            return customer;
+        }
     }
 }

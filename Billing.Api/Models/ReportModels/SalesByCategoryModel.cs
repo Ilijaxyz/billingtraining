@@ -9,7 +9,7 @@ namespace Billing.Api.Models
         {
             public string ProductName { get; set; }
             public double ProductTotal { get; set; }
-            public double CategoryPercent { get; set; }
+            public double ProductPrecent { get; set; }
             public double TotalPercent { get; set; }
         }
 
@@ -20,6 +20,8 @@ namespace Billing.Api.Models
                 Products = new List<ProductSales>();
             }
             public int CategoryId { get; set; }
+            public DateTime StartDate { get; set; }
+            public DateTime EndDate { get; set; }
             public string CategoryName { get; set; }
             public double CategoryTotal { get; set; }
             public double CategoryPercent { get; set; }
