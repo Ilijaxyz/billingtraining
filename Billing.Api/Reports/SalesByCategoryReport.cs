@@ -37,7 +37,7 @@ namespace Billing.Api.Reports
                                {
                                    ProductName = x.Key,
                                    ProductTotal = x.Sum(y => y.SubTotal),
-                                   CategoryPercent = Math.Round(100 * x.Sum(y => y.SubTotal) / sale.CategoryTotal, 2),
+                                   ProductPrecent = Math.Round(100 * x.Sum(y => y.SubTotal) / sale.CategoryTotal, 2),
                                    TotalPercent = Math.Round(100 * x.Sum(y => y.SubTotal) / result.GrandTotal, 2)
                                }).OrderByDescending(x => x.ProductTotal).ToList();
 

@@ -1,0 +1,22 @@
+<input type="date" ng-model="requestData.startDate" required>
+<input type="date" ng-model="requestData.endDate" required>
+
+<button class="btn btn-primary" ng-click="save()" style="float: right;">SALES BY REGION</button>
+
+<table class="table table-bordered" style="counter-reset: serial-number;" ng-show="showRegion">
+      <div>GRAND TOTAL: {{salesByRegionData.grandTotal}} &euro;</div>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Turnover</th>
+                <th>Precent</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in salesByRegionData.sales">
+            <tr>
+                <td>{{item.regionName}}</td>
+                <td>{{item.regionTotal}} &euro;</td>
+                <td>{{item.regionPercent}} %</button></td>
+            </tr>
+        </tbody>
+</table>

@@ -1,0 +1,75 @@
+<div style="border:solid 1px blue" ng-show="showProducts">
+    <div>Id: <b> {{ product.id }}</b></div>
+    <div>Name:<input type="text" ng-model="product.name"></div>
+    <div>Unit:<input type="text" ng-model="product.unit"></div>
+    <div>Price:<input type="text" ng-model="product.price"></div>
+    <div>Category name:
+        <select ng-model="product.categoryId" ng-options="category.id as category.name for category in categories">
+        </select>
+    </div>  
+    <div> <button ng-click="save()">SAVE</button></div>
+</div>
+<button ng-click="new()" class="btn btn-primary" style="margin-bottom: 10px;">NEW PRODUCT</button>
+<style>
+.table td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+<snap ng-repeat="page in pages"><button ng-click="goto(page)">{{page}}</button></snap>
+<table class="table table-bordered" style="counter-reset: serial-number;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Unit</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Input</th>
+                <th>Output</th>
+                <th>Inventory</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="product in products">
+            <tr>
+                <td></td>
+                <td>{{ product.name }}</td>
+                <td>{{product.unit }}</td>
+                <td>{{product.price }}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.input}}</td>
+                <td>{{product.output}}</td>
+                <td>{{product.inventory}}</td>
+                <td><button ng-click="getProduct(product)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="deleteProduct(product)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
+<!--<div class="row">
+    <div class="col-md-1"><b>ID</b></div>
+    <div class="col-md-1"><b>Name</b></div>
+    <div class="col-md-1"><b>Unit</b></div>
+    <div class="col-md-1"><b>Price</b></div>
+    <div class="col-md-1"><b>Cat_name</b></div>
+    <div class="col-md-1"><b>Cat_id</b></div>
+    <div class="col-md-1"><b>Input</b></div>
+    <div class="col-md-1"><b>Output</b></div>
+    <div class="col-md-1"><b>Inventory</b></div>
+    <a href="" ng-click="new()">CREATE NEW</a>
+</div>
+<br>
+<div class="row" ng-repeat="product in products">
+    <div class="col-md-1">{{product.id }}</div>
+    <div class="col-md-1">{{product.name }}</div>
+    <div class="col-md-1">{{product.unit }}</div>
+    <div class="col-md-1">{{product.price }}</div>
+    <div class="col-md-1">{{product.category}}</div>
+    <div class="col-md-1">{{product.categoryId }}</div>
+    <div class="col-md-1">{{product.input }}</div>
+    <div class="col-md-1">{{product.output }}</div>
+    <div class="col-md-1">{{product.inventory}}</div>
+    <a href="" ng-click="getProduct(product)">EDIT</a> |
+    <a href="" ng-click="deleteProduct(product)">DELETE</a> |
+</div>-->

@@ -29,7 +29,13 @@
             .when("/suppliers", { templateUrl: "views/suppliers.html", controller: "SuppliersCtrl" })
             .when("/products", { templateUrl: "views/products.html", controller: "ProductsCtrl" })
             .when("/shippers", { templateUrl: "views/shippers.html", controller: "ShippersCtrl" })
+            //reports
             .when("/AgentsByRegion",{templateUrl:"views/agentsregions.html",controller:"AgentsRegionsCtrl"})
+            .when("/SalesByCustomer",{templateUrl:"views/salesbycustomer.html",controller:"SalesByCustomerCtrl"})
+            .when("/SalesByRegion",{templateUrl:"views/salesbyregion.html",controller:"SalesByRegionCtrl"})
+            .when("/SalesByCategory",{templateUrl:"views/Reports/salesbycategory.html",controller:"SalesByCategoryCtrl"})
+            .when("/CustomersByCategory",{templateUrl:"views/Reports/salesbycustomercategory.html",controller:"SalesByCustomerCategoryCtrl"})
+            //end reports
             .when("/procurements", { templateUrl: "views/procurements.html", controller: "ProcurementsCtrl" })
             .when("/login", { templateUrl: "views/login.html", controller: "LoginCtrl" })
             .when("/logout", { template: "", controller: "LogoutCtrl"})

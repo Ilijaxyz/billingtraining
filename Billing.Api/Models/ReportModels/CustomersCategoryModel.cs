@@ -4,36 +4,35 @@ using System.Collections.Generic;
 
 namespace Billing.Api.Models
 {
-    public class CustomersCategoryModel
-    {
-        public class InputModel
+
+        public class CategoryPurchaseModel
         {
-            public string Row { get; set; }
-            public int Column { get; set; }
-            public double Value { get; set; }
+            public string CategoryName { get; set; }
+            public double CategoryTotal { get; set; }
         }
 
-        public class CustomerModel
+        public class CustomerPurchaseModel
         {
-            public CustomerModel()
+            public CustomerPurchaseModel(int length)
             {
-                Name = " ";
-                Turnover = 0;
-                Sales = new Dictionary<int, double>();
+                CategorySales = new double[length];
             }
-            public string Name { get; set; }
-            public double Turnover { get; set; }
-            public Dictionary<int, double> Sales { get; set; }
+            public string CustomerName { get; set; }
+            public double CustomerTurnover { get; set; }
+            public double[] CategorySales { get; set; }
         }
 
-        public CustomersCategoryModel()
-        {
-            Customers = new List<CustomerModel>();
+        public class CustomersCategoryModel
+    {
+            public CustomersCategoryModel()
+            {
+                CusRevenue = new List<CustomerPurchaseModel>();
+                CatRevenue = new List<CategoryPurchaseModel>();
+            }
+            public DateTime StartDate { get; set; }
+            public DateTime EndDate { get; set; }
+            public double GrandTotal { get; set; }
+            public List<CategoryPurchaseModel> CatRevenue { get; set; }
+            public List<CustomerPurchaseModel> CusRevenue { get; set; }
         }
-        public string Title { get; set; }
-        public string Agent { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public List<CustomerModel> Customers { get; set; }
     }
-}

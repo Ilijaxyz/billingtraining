@@ -1,0 +1,45 @@
+<modal-dialog show='modalShown'>
+
+<!--<div ng-show="showCategorie">-->
+    <table style="border:solid 1px blue">
+        <tr><td align="right">Id: </td><td><b>{{ categorie.id }}</b></td></tr>
+        <tr><td align="right">Name: </td><td><input type="text" ng-model="categorie.name"></td></tr>
+        <tr><td align="right">Product: </td><td><input type="number" ng-model="categorie.product"></td></tr>
+        <tr><td></td><td><button ng-click="save()">SAVE</button></td></tr>
+    </table>
+<!--</div>-->
+</modal-dialog>
+<button ng-click="new()" class="btn btn-primary" style="margin-bottom: 10px;">NEW CATEGORIE</button>
+<style>
+.table td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+<table class="table table-bordered" style="counter-reset: serial-number;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="categorie in categories">
+            <tr>
+                <td></td>
+                <td>{{ categorie.name }}</td>
+                <td><button ng-click="edit(categorie)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="delete(categorie)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+<!--<div class="row" ng-repeat="categorie in categories">
+    <div class="col-md-1">{{ categorie.id }}</div>
+    <div class="col-md-2">{{ categorie.name }}</div>
+    <div class="col-md-2">{{ categorie.product }}</div>
+    <div class="col-md-1"><a href="" ng-click="edit(categorie)">edit</a></div>
+    <button ng-click="delete(categorie)">DELETE</button> 
+</div>
+<button ng-click="new()">NEW Categorie</button>-->

@@ -93,11 +93,11 @@
                 ListInvoices(page-1);
             }
         function ListAgents(agentName){
-            DataService.list("agents/" + name, function(data){$scope.agents = data});
+            DataService.list("agents/", function(data){$scope.agents = data});
         }
 
         function ListCustomers(customerName){
-            DataService.list("customers/"+ name, function(data){$scope.customers = data});
+            DataService.list("customers/", function(data){$scope.customers = data});
         }
 
         function ListShipper(shipperName){

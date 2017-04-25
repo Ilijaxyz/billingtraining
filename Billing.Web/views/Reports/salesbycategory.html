@@ -1,0 +1,24 @@
+<input type="date" ng-model="requestData.startDate" required>
+<input type="date" ng-model="requestData.endDate" required>
+
+<button class="btn btn-primary" ng-click="save()" style="float: right;">SALES BY CATEGORY</button>
+
+<table class="table table-bordered" style="counter-reset: serial-number;" ng-show="showCategory">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Turnover</th>
+                <th>Precent</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in salesByCategoryData.sales">
+            <tr>
+                <td>{{item.categoryName}}</td>
+                <td>{{item.categoryTotal}} &euro;</td>
+                <td>{{item.categoryPercent}} %</td>
+                <td><button class="btn btn-primary">INFO</button></td>
+            </tr>
+        </tbody>
+        <td bgcolor="#00ace6">TOTAL:</td><td colspan="2" bgcolor="#00ace6">{{salesByCategoryData.grandTotal}} &euro;</td>
+</table>

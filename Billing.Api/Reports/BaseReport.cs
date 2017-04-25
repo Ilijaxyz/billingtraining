@@ -16,9 +16,6 @@ namespace Billing.Api.Reports
         {
             _unitOfWork = unitOfWork;
         }
-
-
-
         protected ReportFactory Factory
         {
             get { return _factory ?? (_factory = new ReportFactory()); }

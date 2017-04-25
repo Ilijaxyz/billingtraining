@@ -12,27 +12,11 @@ namespace Billing.Api.Controllers
     public class CustomersController : BaseController
     {
         [Route("")]
-        public IHttpActionResult GetAll(int page = 0)
-        {
-            int PageSize = 10;
-            var query = UnitOfWork.Customers.Get().OrderBy(x => x.Id).ToList();
-            int TotalPages = (int)Math.Ceiling((double)query.Count() / PageSize);
-
-            var returnObject = new
-            {
-                pageSize = PageSize,
-                currentPage = page,
-                totalPages = TotalPages,
-                customerList = query.Skip(PageSize * page).Take(PageSize).Select(x => Factory.Create(x)).ToList()
-            };
-            return Ok(returnObject);
-        }
-        //[Route("")]
         //[TokenAuthorization("user,admin")]
-        //public IHttpActionResult Get()
-        //{     
-        //    return Ok(UnitOfWork.Customers.Get().ToList().Select(x => Factory.Create(x)).ToList());
-        //}
+        public IHttpActionResult Get()
+        {
+            return Ok(UnitOfWork.Customers.Get().ToList().Select(x => Factory.Create(x)).ToList());
+        }
 
         [Route("{name}")]
         //[TokenAuthorization("user,admin")]
@@ -75,7 +59,7 @@ namespace Billing.Api.Controllers
                 UnitOfWork.Commit();
                 return Ok(Factory.Create(customer));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Helper.Log(ex.Message, "ERROR");
                 return BadRequest(ex.Message);
