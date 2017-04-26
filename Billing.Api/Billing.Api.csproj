@@ -202,8 +202,10 @@
     <Compile Include="Controllers\ReportControllers\CustomersByCategoryController.cs" />
     <Compile Include="Controllers\ReportControllers\InvoiceReportController.cs" />
     <Compile Include="Controllers\ReportControllers\InvoicesReviewController.cs" />
+    <Compile Include="Controllers\ReportControllers\SalesByAgentsController.cs" />
     <Compile Include="Controllers\ReportControllers\SalesByCategoryController.cs" />
     <Compile Include="Controllers\ReportControllers\SalesByCustomerController.cs" />
+    <Compile Include="Controllers\ReportControllers\SalesByProductController.cs" />
     <Compile Include="Controllers\ReportControllers\StockLevelController.cs" />
     <Compile Include="Controllers\SignatureController.cs" />
     <Compile Include="Controllers\TokenRequestController.cs" />
@@ -253,8 +255,10 @@
     <Compile Include="Reports\InvoiceReport.cs" />
     <Compile Include="Reports\InvoicesReviewReport.cs" />
     <Compile Include="Reports\ReportFactory.cs" />
+    <Compile Include="Reports\SalesByAgentReport.cs" />
     <Compile Include="Reports\SalesByCategoryReport.cs" />
     <Compile Include="Reports\SalesByCustomerReport.cs" />
+    <Compile Include="Reports\SalesByProductReport.cs" />
     <Compile Include="Reports\SetOfReports.cs" />
     <Compile Include="Reports\DashboardReport.cs" />
     <Compile Include="Reports\SalesByRegionReport.cs" />
