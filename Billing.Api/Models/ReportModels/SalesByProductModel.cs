@@ -7,23 +7,24 @@ namespace Billing.Api.Models.ReportModels
 {
     public class SalesByProductModel
     {
-        public SalesByProductModel()
+        public class ProductSalesModel
         {
-            sales = new List<ProductSales>();
-        }
-        public string CategoryName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public double CategoryTotal { get; set; }
-        public double PrecentTotal { get; set; }
-        public List<ProductSales> sales { get; set; }
 
+            public string ProductName { get; set; }
+            public double ProductTotal { get; set; }
+            public double ProductPercent { get; set; }
+            public double TotalPercent { get; set; }
+        }
+            public SalesByProductModel()
+            {
+                List<ProductSalesModel> ProductSales = new List<ProductSalesModel>();
+            }
+            public string CategoryName { get; set; }
+            public DateTime StartDate { get; set; }
+            public DateTime EndDate { get; set; }
+            public double CategoryTotal { get; set; }
+            public double PercentTotal { get; set; }
+
+            public List<ProductSalesModel> ProductSales { get; set; }
+        }
     }
-    public class ProductSales
-    {
-        public string ProductName { get; set; }
-        public double ProductTotal { get; set; }
-        public double ProductPrecent { get; set; }
-        public double TotalPrecent { get; set; }
-    } 
-}

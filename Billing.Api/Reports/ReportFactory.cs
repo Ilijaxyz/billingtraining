@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using static Billing.Api.Models.ReportModels.SalesByProductModel;
 
 namespace Billing.Api.Reports
 {
@@ -86,6 +87,49 @@ namespace Billing.Api.Reports
             }
 
             return customer;
+        }
+
+        public SalesByProductModel SalesByProductCreate(DateTime startDate, DateTime endDate, string categoryName, double categoryTotal, double percentTotal)
+        {
+
+            return new SalesByProductModel
+            {
+                StartDate = startDate,
+                EndDate = endDate,
+                CategoryName = categoryName,
+                CategoryTotal = categoryTotal,
+                PercentTotal = percentTotal
+            };
+        }
+        public ProductSalesModel Create(List<Database.Invoice> sample, string productName, double productTotal, double categoryTotal, double invoiceTotal)
+        {
+            return new ProductSalesModel
+            {
+                ProductName = productName,
+                ProductTotal = productTotal,
+                ProductPercent = Math.Round(100 * productTotal / categoryTotal, 2),
+                TotalPercent = Math.Round(100 * productTotal / invoiceTotal, 2)
+
+            };
+        }
+        public RegionSalesAgentModel Create(List<Invoice> InvoicesOfAgent, string Region, double Sales, double AgentTotal, List<Invoice> Invoices)
+        {
+            var query = Invoices.GroupBy(x => x.Customer.Town.Region.ToString())
+                               .Select(x => new { RegionName = x.Key, RegionTotal = x.Sum(y => y.SubTotal) })
+                               .ToList();
+            double total = 0;
+            foreach (var item in query)
+                if (item.RegionName.Equals(Region))
+                    total = item.RegionTotal;
+
+            RegionSalesAgentModel region = new RegionSalesAgentModel()
+            {
+                RegionName = Region,
+                RegionTotal = Math.Round(Sales, 2),
+                RegionPercent = Math.Round(100 * Sales / total, 2),
+                TotalPercent = Math.Round(100 * Sales / AgentTotal, 2)
+            };
+            return region;
         }
     }
 }

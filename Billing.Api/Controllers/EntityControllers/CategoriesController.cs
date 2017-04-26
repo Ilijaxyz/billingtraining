@@ -41,6 +41,12 @@ namespace Billing.Api.Controllers
             }
         }
 
+        [Route("{name}")]
+        public IHttpActionResult Get(string name)
+        {
+            return Ok(UnitOfWork.Categories.Get().Where(x => x.Name.Contains(name)).ToList().Select(a => Factory.Create(a)).ToList());
+        }
+
         //Insert
         [Route("")]
         //[TokenAuthorization("admin")]
