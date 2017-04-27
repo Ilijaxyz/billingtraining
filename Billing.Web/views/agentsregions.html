@@ -27,7 +27,8 @@
        <th ng-repeat="region in regionlist">{{region}}</th>
    </thead>
     <tr ng-repeat="items in CrossAgentRegion.agents">
-        <td><b>{{items.name}}</b></td>
+        <td><a href="" ng-click="showAgent(items)">{{items.name}}</a><td>
+        <!--<td><b>{{items.name}}</b></td>-->
         <td>{{items.turnover | number: 2}}</td>
         <td ng-repeat="item in items.sales track by $index">{{item | number: 2}}</td>
     </tr>
@@ -37,3 +38,14 @@
     </tr>
 -->
 </table>
+<div class="arGraph"><canvas id="salesChart"></canvas></div>
+
+
+
+
+
+
+
+
+
+

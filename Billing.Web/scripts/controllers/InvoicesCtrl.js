@@ -92,7 +92,7 @@
         $scope.goto = function(page){
                 ListInvoices(page-1);
             }
-        function ListAgents(agentName){
+       	function ListAgents(agentName){
             DataService.list("agents/", function(data){$scope.agents = data});
         }
 

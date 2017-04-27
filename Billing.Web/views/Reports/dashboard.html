@@ -1,0 +1,151 @@
+<!--<button class="btn btn-primary" ng-click="ListDashboard()" style="float: right;">DASHBOARD</button>-->
+<!-- testiranje kontrolera <p ng-show="showDashboard">{{Dashboard.agent}}</p>-->
+<div>
+<!-- start table for regions-->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Regions</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.regions">
+            <tr>
+                <td>{{dash.label}}</td>
+                <td>{{dash.sales}}</td>
+            </tr>
+        </tbody>
+</table>
+<!--<div ac-chart='bar' ac-data="data" ac-config="config" id='chart' class='chart'></div>-->
+<!-- end of the region table-->
+
+<!-- start of the categories -->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Categories</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.categories">
+            <tr>
+                <td>{{dash.label}}</td>
+                <td>{{dash.sales}}</td>
+            </tr>
+        </tbody>
+</table>
+<!--end of the categories -->
+
+<!-- start of the agents -->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Agents</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.agents">
+            <tr>
+                <td>{{dash.label}}</td>
+                <td>{{dash.sales}}</td>
+            </tr>
+        </tbody>
+</table>
+<!--end of the agents -->
+
+<!-- start of the months -->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Months</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="(key, dash) in Dashboard.sales">
+            <tr>
+                <td>{{key}}</td>
+                <td>{{dash}}</td>
+            </tr>
+        </tbody>
+</table>
+<!--end of the months -->
+
+<!-- start of the top five -->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Revenue</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.top5">
+            <tr>
+                <td>{{dash.name}}</td>
+                <td>{{dash.quantity}}</td>
+                <td>{{dash.revenue}}</td>
+            </tr>
+        </tbody>
+</table>
+<!-- end of the top five -->
+
+<!-- start of the Hot sales -->
+<table class="table table-bordered" style="counter-reset: serial-number; width:40%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Ordered</th>
+                <th>Sold</th>
+                <th>Difference</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.hots">
+            <tr>
+                <td>{{dash.name}}</td>
+                <td>{{dash.stock}}</td>
+                <td>{{dash.ordered}}</td>
+                <td>{{dash.sold}}</td>
+                <td>{{dash.difference}}</td>
+            </tr>
+        </tbody>
+</table>
+<!-- end of the hot sales -->
+
+<!-- start of the invoices-->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.invoices">
+            <tr>
+                <td>{{dash.status}}</td>
+                <td>{{dash.count}}</td>
+            </tr>
+        </tbody>
+</table>
+<!-- end of the invoices-->
+
+<!-- start of the customers-->
+<table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Credit</th>
+                <th>Debit</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="dash in Dashboard.customers">
+            <tr>
+                <td>{{dash.name}}</td>
+                <td>{{dash.credit}}</td>
+                 <td>{{dash.debit}}</td>
+            </tr>
+        </tbody>
+</table>
+<!-- end of the customers-->
+
+</div>
