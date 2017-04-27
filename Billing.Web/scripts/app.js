@@ -35,6 +35,7 @@
             .when("/SalesByRegion",{templateUrl:"views/salesbyregion.html",controller:"SalesByRegionCtrl"})
             .when("/SalesByCategory",{templateUrl:"views/Reports/salesbycategory.html",controller:"SalesByCategoryCtrl"})
             .when("/CustomersByCategory",{templateUrl:"views/Reports/salesbycustomercategory.html",controller:"SalesByCustomerCategoryCtrl"})
+            .when("/Dashboard",{templateUrl:"views/Reports/dashboard.html",controller:"DashboardCtrl"})
             //end reports
             .when("/procurements", { templateUrl: "views/procurements.html", controller: "ProcurementsCtrl" })
             .when("/login", { templateUrl: "views/login.html", controller: "LoginCtrl" })

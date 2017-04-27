@@ -1,0 +1,121 @@
+<div id="editor" style="width:100%">
+    <div class="modal-header">
+        <div><h2 class="modal-title">{{ modalTitle }}</h2></div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div>Invoice No:</div>
+                <div><input ng-model="invoice.invoiceNo" type="text" /></div>
+                <div>Customer:</div>
+                <div><input type="text" ng-model="selectedCustomer" placeholder="Enter customer"
+                            typeahead="customer as customer.name for customer in getCustomers($viewValue)"></div>
+            </div>
+            <div class="col-md-3">
+                <span>Date:</span>
+                <div class="input-group">
+                    <input type="text" datepicker-popup="dd.MM.yyyy" size="12" ng-model="invoice.date" is-open="dateOpened" />
+                    <span><button type="button" class="btn btn-xs btn-default" ng-click="openDate($event)"><i class="fa fa-calendar"></i></button></span>
+                </div>
+                <div>Agent:</div>
+                <div><select ng-model="invoice.agentId"
+                             ng-options="agent.id as agent.name for agent in agents"></select>
+                </div>
+                <div>VAT [%]:</div>
+                <div><input ng-model="invoice.vat" type="text" size="5" /></div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span>Shipped On:</span>
+                    <div class="input-group">
+                        <input type="text" datepicker-popup="dd.MM.yyyy" size="12" ng-model="invoice.shippedOn" is-open="shipOpened" />
+                        <span><button type="button" class="btn btn-xs btn-default" ng-click="openShip($event)"><i class="fa fa-calendar"></i></button></span>
+                    </div>
+                </div>
+                <div>Shipper:</div>
+                <div><select ng-model="invoice.shipperId"
+                             ng-options="shipper.id as shipper.name for shipper in shippers"></select>
+                </div>
+                <div>Shipping:</div>
+                <div><input ng-model="invoice.shipping" type="text" size="5" /></div>
+            </div>
+            <div class="col-md-3">
+                <div>Status:</div>
+                <div><input ng-model="invoice.status" type="text" /></div>
+                <div class="pull-left">Shipping:</div><div class="pull-right"><b>{{ invoice.shipping | number:2 }}</b></div>
+                <div style="clear:both"></div>
+                <div class="pull-left">Subtotal:</div><div class="pull-right"><b>{{ invoice.subTotal | number:2 }}</b></div>
+                <div style="clear:both"></div>
+                <div class="pull-left">VAT amount:</div><div class="pull-right"><b>{{ invoice.vatAmount | number:2 }}</b></div>
+                <div style="clear:both"></div>
+                <div class="pull-left">Invoice total:</div><div class="pull-right"><b>{{ invoice.total | number:2 }}</b></div>
+            </div>
+        </div>
+        <div ng-show="invoice.id">
+            <hr>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">Product</div>
+                <div class="col-md-1">Quantity</div>
+                <div class="col-md-1">Unit</div>
+                <div class="col-md-1">Price</div>
+                <div class="col-md-2 text-right">Subtotal</div>
+            </div>
+            <hr>
+            <div ng-repeat="item in invoice.items" class="row grid-i">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <input type="text" ng-model="item.product" size="30">
+                </div>
+                <div class="col-md-1">
+                    <input ng-model="item.quantity" size="5" type="text" />
+                </div>
+                <div class="col-md-1">
+                    {{ item.unit }}
+                </div>
+                <div class="col-md-1">
+                    <input ng-model="item.price" size="5" type="text" />
+                </div>
+                <div class="col-md-2 text-right">
+                    <b>{{ item.subTotal | number:2 }}</b>
+                </div>
+                <div class="col-md-2">
+                    <div class="pull-left"><button type="button" ng-click="saveItem(item)" class="btn btn-xs btn-success"><i class="fa fa-check-circle"></i></button></div>
+                    <div class="pull-right"><button type="button" ng-click="removeItem(item)" class="btn btn-xs btn-danger"><i class="fa fa-close"></i></button></div>
+                </div>
+            </div>
+            <div class="row grid-i">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <input type="text" ng-model="selectedProduct" placeholder="Enter product" size="30"
+                           typeahead="product as product.name for product in getProducts($viewValue)">
+                </div>
+                <div class="col-md-1">
+                    <input ng-model="newItem.quantity" size="5" type="text" />
+                </div>
+                <div class="col-md-1">
+                    {{ newItem.unit }}
+                </div>
+                <div class="col-md-1">
+                    <input ng-model="newItem.price" size="5" type="text" />
+                </div>
+                <div class="col-md-2 text-right">
+                    <b>{{ newItem.subTotal | number:2 }}</b>
+                </div>
+                <div class="col-md-2">
+                    <div class="pull-left"><button type="button" ng-click="saveItem(newItem)" class="btn btn-xs btn-success"><i class="fa fa-check-circle"></i></button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="modal-footer">
+        <div class="pull-right">
+            <button class="btn btn-success" ng-click="save(invoice)"><i class="fa fa-save"></i> Save</button>
+            <button class="btn btn-warning" ng-click="close()"><i class="fa fa-close"></i> Close</button>
+        </div>
+    </div>
+</div>

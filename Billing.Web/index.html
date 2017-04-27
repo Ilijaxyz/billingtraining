@@ -17,6 +17,12 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+      
+      
+      <script src="library/toaster.min.js"></script>
+      <script src="library/chart.min.js"></script>
+      <script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
       <!-- Latest compiled and minified CSS -->
     <!-- Bootstrap core CSS -->
@@ -51,6 +57,12 @@
       <script src="scripts/controllers/SalesByRegionCtrl.js"></script>
       <script src="scripts/controllers/ReportControllers/SalesByCategoryCtrl.js"></script>
       <script src="scripts/controllers/ReportControllers/SalesByCustomerCategoryCtrl.js"></script>
+
+      <script src="scripts/controllers/ReportControllers/StockLevelCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/InvoiceReportCtrl.js"></script>
+
+      <script src="scripts/controllers/ReportControllers/DashboardCtrl.js"></script>
+
       <!--end of reports -->
       <script src="scripts/controllers/CustomersCtrl.js"></script>
       <script src="scripts/controllers/CategoriesCtrl.js"></script>
@@ -88,9 +100,11 @@
       <li><a href="#SalesByRegion">Sales By Region</a></li>
       <li><a href="#SalesByCategory">Sales By Category</a></li>
       <li><a href="#CustomersByCategory">Sales By Customer / Category</a></li>
-    </ul>
+      <li><a href="#StockLevel">Stock Report</a></li>
+
+      </ul>
   </div>
-            <li><a href="#">Dashboard</a></li>
+             <li><a href="#Dashboard">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#" ng-show="currentUser">{{ currentUser }}</a></li>
             <li><a href="#/logout">Logout</a></li>

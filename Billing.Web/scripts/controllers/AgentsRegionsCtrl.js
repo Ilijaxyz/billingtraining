@@ -6,7 +6,61 @@
             DataService.insert("AgentsByRegion",$scope.request,
             function(data){
                 $scope.CrossAgentRegion=data;
+                 angular.forEach(data.agents[0].sales, function(value, key) {
+                    if(key != "$id") {
+                        average.push(value/8);
+                    }
+                });
                           });        
+        };
+        
+        var vch = document.getElementById("salesChart");
+        var average = new Array();
+        $scope.show = false;
+        
+         $scope.showAgent = function(agent){
+            var sales = new Array();
+            var maxv = 0;
+            angular.forEach(agent.sales, function(value, key) {
+                if(key != "$id") sales.push(value);
+                if(value>maxv) maxv = value;
+            });
+            maxv = 100000 * Math.ceil(maxv / 100000);
+            var step = maxv / 5;
+            var cht = new Chart(vch, {
+                type: "bar",
+                data: {
+                    labels: BillingConfig.regions,
+                    datasets: [
+                        {
+                            type: "line",
+                            label: "average",
+                            data: average,
+                            //backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderWidth: 1,
+                            yAxisID: "avg"
+                        },
+                        {
+                            label: "revenue",
+                            data: sales,
+                            backgroundColor: 'rgba(64, 159, 255, 0.2)',
+                            borderColor: 'rgba(64, 159, 255, 1)',
+                            borderWidth: 1,
+                            yAxisID: "rev"
+                        }]
+                },
+                options: {
+                    title: { display: true, text: agent.name, padding:8, fontFamily:'Open Sans', fontSize:16 },
+                    legend: { position: "none" },
+                    scales: {
+                        yAxes: [
+                            { type: "linear", id: "avg", display:false, position:"right", ticks: { stepSize: step, min: 0, max: maxv } },
+                            { type: "linear", id: "rev", display:true, position:"right", ticks: { stepSize: step, min: 0, max: maxv } }
+                        ]
+                    }
+                }});
+            $scope.show = true;
         };
         
         //date-time picker --- start
@@ -98,6 +152,38 @@
           return '';
         }
       //date-time picker --- end
+        angular.module("app", ["chart.js"]).controller("LineCtrl", function ($scope) {
+
+  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  $scope.options = {
+    scales: {
+      yAxes: [
+        {
+          id: 'y-axis-1',
+          type: 'linear',
+          display: true,
+          position: 'left'
+        },
+        {
+          id: 'y-axis-2',
+          type: 'linear',
+          display: true,
+          position: 'right'
+        }
+      ]
+    }
+  };
+});
+              
         
     }]);
 }());
