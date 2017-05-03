@@ -1,5 +1,6 @@
 ﻿using Billing.Api.Helpers;
 using Billing.Database;
+using Billing.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,37 +13,38 @@ namespace Billing.Api.Controllers
     [RoutePrefix("api/stock")]
     public class StockController : BaseController
     {
+        //[Route("")]
+        ////TokenAuthorization("user,admin")]
+        //public IHttpActionResult GetAll(int page = 0)
+        //{
+        //    int PageSize = 8;
+        //    var query = UnitOfWork.Stocks.Get().OrderBy(x => x.Id).ToList();
+        //    int TotalPages = (int)Math.Ceiling((double)query.Count() / PageSize);
+
+        //    var returnObject = new
+        //    {
+        //        pageSize = PageSize,
+        //        currentPage = page,
+        //        totalPages = TotalPages,
+        //        stocksList = query.Skip(PageSize * page).Take(PageSize).Select(x => Factory.Create(x)).ToList()
+        //    };
+        //    return Ok(returnObject);
+        //}
+
         [Route("")]
         //TokenAuthorization("user,admin")]
-        public IHttpActionResult GetAll(int page = 0)
+        public IHttpActionResult Get()
         {
-            int PageSize = 8;
-            var query = UnitOfWork.Stocks.Get().OrderBy(x => x.Id).ToList();
-            int TotalPages = (int)Math.Ceiling((double)query.Count() / PageSize);
-
-            var returnObject = new
+            try
             {
-                pageSize = PageSize,
-                currentPage = page,
-                totalPages = TotalPages,
-                stocksList = query.Skip(PageSize * page).Take(PageSize).Select(x => Factory.Create(x)).ToList()
-            };
-            return Ok(returnObject);
+                return Ok(UnitOfWork.Stocks.Get().ToList().Select(x => Factory.Create(x)).ToList());
+            }
+            catch (Exception ex)
+            {
+                Helper.Log(ex.Message, "ERROR");
+                return BadRequest(ex.Message);
+            }
         }
-
-        //[Route("")]
-        //public IHttpActionResult Get()
-        //{
-        //    try
-        //    {
-        //        return Ok(UnitOfWork.Stocks.Get().ToList().Select(x => Factory.Create(x)).ToList());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Helper.Log(ex.Message, "ERROR");
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
 
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)

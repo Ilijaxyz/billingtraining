@@ -1,7 +1,7 @@
 (function () {
     application.controller("SalesByRegionCtrl", ['$scope', '$anchorScroll', 'DataService', function ($scope, $anchorScroll, DataService) {
         $scope.showRegion = false;
-                $scope.requestData = {
+            $scope.requestData = {
             startDate: new Date(2016,1,1),
             endDate: new Date(2017,1,1)
         };
