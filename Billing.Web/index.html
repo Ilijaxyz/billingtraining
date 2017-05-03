@@ -10,20 +10,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Alpha Billing Page</title>
     <meta charset="windows-1250">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
-      
-      
-      <script src="library/toaster.min.js"></script>
-      <script src="library/chart.min.js"></script>
-      <script src="node_modules/chart.js/Chart.min.js"></script>
-<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
 
+      <script src="library/toaster.min.js"></script>
+       <script src="library/chart.min.js"></script>
       <!-- Latest compiled and minified CSS -->
     <!-- Bootstrap core CSS -->
     <link href="styles/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +38,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-      <script src="styles/bootstrap.css"></script>
+      <link rel="styles/bootstrap.css"/>
       <link rel="stylesheet" href="styles/modal.css">
       <script src="library/angular.min.js"></script>
       <link rel="stylesheet" href="styles/style.css">
@@ -51,19 +46,16 @@
       <script src="library/angular-local-storage.min.js"></script>
       <script src="scripts/app.js"></script>
       <script src="scripts/controllers/AgentsCtrl.js"></script>
+
       <!-- reports-->
       <script src="scripts/controllers/AgentsRegionsCtrl.js"></script>
       <script src="scripts/controllers/SalesByCustomerCtrl.js"></script>
       <script src="scripts/controllers/SalesByRegionCtrl.js"></script>
       <script src="scripts/controllers/ReportControllers/SalesByCategoryCtrl.js"></script>
       <script src="scripts/controllers/ReportControllers/SalesByCustomerCategoryCtrl.js"></script>
-
-      <script src="scripts/controllers/ReportControllers/StockLevelCtrl.js"></script>
-      <script src="scripts/controllers/ReportControllers/InvoiceReportCtrl.js"></script>
-
       <script src="scripts/controllers/ReportControllers/DashboardCtrl.js"></script>
-
       <!--end of reports -->
+
       <script src="scripts/controllers/CustomersCtrl.js"></script>
       <script src="scripts/controllers/CategoriesCtrl.js"></script>
       <script src="scripts/controllers/SuppliersCtrl.js"></script>
@@ -90,25 +82,25 @@
             <span class="icon-bar"></span>       
           <a class="navbar-brand" href="#">Alpha Team Billing App</a>
         </div>
-          <ul class="nav navbar-nav navbar-right" >
-<div class="dropdown" style="float: left; margin-top: 8px;">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reports
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#AgentsByRegion">Agents By Region Report</a></li>
-      <li><a href="#SalesByCustomer">Sales By Customer Report</a></li>
-      <li><a href="#SalesByRegion">Sales By Region</a></li>
-      <li><a href="#SalesByCategory">Sales By Category</a></li>
-      <li><a href="#CustomersByCategory">Sales By Customer / Category</a></li>
-      <li><a href="#StockLevel">Stock Report</a></li>
-
-      </ul>
-  </div>
-             <li><a href="#Dashboard">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#" ng-show="currentUser">{{ currentUser }}</a></li>
-            <li><a href="#/logout">Logout</a></li>
-          </ul>
+  <!-- start of the navbar menu top right corner, css is in style.css -->
+    <ul class="nav navbar-nav navbar-right" >
+        <div class="dropdown">
+           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Monthly reports<span class="caret"></span></button>
+             <ul class="dropdown-menu">
+                <li><a href="#AgentsByRegion">Agents By Region Report</a></li>
+                <li><a href="#SalesByCustomer">Sales By Customer Report</a></li>
+                <li><a href="#SalesByRegion">Sales By Region</a></li>
+                <li><a href="#SalesByCategory">Sales By Category</a></li>
+                <li><a href="#CustomersByCategory">Sales By Customer / Category</a></li>
+            </ul>
+        </div>
+                <li><a href="#Dashboard">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#" ng-show="currentUser">{{ currentUser }}</a></li>
+                <li><a href="#/logout">Logout</a></li>
+    </ul>
+ <!-- end of the navbar menu top right corner -->
+  
           <form class="navbar-form navbar-right">
           </form>
         </div>
@@ -120,7 +112,6 @@
           <ul class="nav nav-sidebar">
             <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="#agents">Agents</a></li>
-            <!--<li><a href="#AgentsByRegion">Agents/Regions</a></li>-->
             <li><a href="#/categories">Catgories</a></li>
             <li><a href="#/customers">Customers</a></li>
             <li><a href="#/invoices">Invoices</a></li>
@@ -135,13 +126,8 @@
     </div>
     <div class="container" style="margin-left: 10%; margin-top: 2%;"><div ng-view autoscroll="true"></div></div>  
             <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            ================================================== -->
     <script>window.jQuery || document.write('<script src="styles/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="styles/docs/dist/js/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="styles/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>

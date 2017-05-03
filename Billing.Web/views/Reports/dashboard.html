@@ -1,8 +1,8 @@
 <!--<button class="btn btn-primary" ng-click="ListDashboard()" style="float: right;">DASHBOARD</button>-->
 <!-- testiranje kontrolera <p ng-show="showDashboard">{{Dashboard.agent}}</p>-->
 <div>
-<!-- start table for regions-->
-<table class="table table-bordered" style="counter-reset: serial-number; width:30%" ng-show="showDashboard">
+<!-- start table for regions css is in style.css-->
+<table class="table table-bordered regionDashTable" ng-show="showDashboard">
         <thead>
             <tr>
                 <th>Regions</th>
@@ -15,10 +15,13 @@
                 <td>{{dash.sales}}</td>
             </tr>
         </tbody>
+        <div><button ng-click="showRegion()">Show region chart</button></div>
+<div class="regionChart">
+    <canvas id="myChart" width="400" height="400"></canvas>
+</div>
 </table>
-<!--<div ac-chart='bar' ac-data="data" ac-config="config" id='chart' class='chart'></div>-->
 <!-- end of the region table-->
-
+<hr>
 <!-- start of the categories -->
 <table class="table table-bordered" style="counter-reset: serial-number; width:30%;" ng-show="showDashboard">
         <thead>
@@ -147,5 +150,4 @@
         </tbody>
 </table>
 <!-- end of the customers-->
-
 </div>

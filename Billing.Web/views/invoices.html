@@ -12,12 +12,12 @@
                 <th>#</th>
                 <th>Invoice No</th>
                 <th>Date</th>
-                <th>Shipped</th>
-                <th>Status</th>
-                <th>Vat</th>
-                <th>Shipping</th>
-                <th>Agent</th>
                 <th>Customer</th>
+                <th>Total</th>
+                <th>Status</th>
+				<th>Vat</th>
+              	<th>Shipping</th>
+               	<th>Agent</th>
                 <th>Shipper</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
@@ -28,12 +28,12 @@
                 <td></td>
                 <td>{{invoice.invoiceNo}}</td>
                 <td>{{invoice.date }}</td>
-                <td>{{invoice.shippedOn}}</td>
-                <td>{{invoice.statusId}}</td>
+                <td>{{invoice.customer}}</td>
+				<td>{{invoice.total | currency:"KM ":2}}</td>
+                <td>{{invoice.status}}</td>
                 <td>{{invoice.vat}}</td>
                 <td>{{invoice.shipping}}</td>
                 <td>{{invoice.agent}}</td>
-                <td>{{invoice.customer}}</td>
                 <td>{{invoice.shipper}}</td>
                 <td><button ng-click="edit(invoice)" class="btn btn-warning" data-toggle="modal" data-target="#myModalNew">EDIT</button></td>
                 <td><button ng-click="delete(invoice)" class="btn btn-danger">DELETE</button></td>
@@ -59,57 +59,114 @@
                 </div>
         		<!-- Modal Body -->
         		<div class="modal-body">
-        		   <form role="form">
-         		     <div class="form-group">
-                       <label class="hidden">ID</label><input type="hidden" class="form-control" ng-model="invoice.id"
-                       ng-disabled="invoice.id"/>
-                       </div>
-                      <div class="form-group">
-		             <label>Invoice No</label><input type="text" class="form-control" ng-model="invoice.invoiceNo"/>
-		             </div> 
-                     <div class="form-group">
-		             <label>Shipped On</label><input type="date" class="form-control" ng-model="invoice.shippedOn"/>
-		             </div>  
-		
-			         <div class="form-group">
-                    <label>Status Id</label><input type="number" class="form-control" ng-model="invoice.statusId"/>
-                    </div>
-                     <div class="form-group">
-                    <label>Date</label><input type="date" class="form-control" ng-model="invoice.price"/>
-					   </div>
-                    <div class="form-group">
-                    <label>Vat</label><input type="number" class="form-control" ng-model="invoice.vat"/>
-                    </div>  
-                    <div class="form-group">
-                    <label>Shipping</label><input type="number" class="form-control" ng-model="invoice.shipping"/>
-                    </div> 
-                    <div class="form-group">
-                    <label>Agent</label>
-                    <select ng-model="invoice.agentId" class="form-control"
-                            ng-options="agent.id as agent.name for agent in agents"></select>
-                     </div>
-                    <div class="form-group">
-                    <label>Shipper</label>
-                    <select ng-model="invoice.shipperId" class="form-control"
-                            ng-options="shipper.id as shipper.name for shipper in shippers"></select>
-                     </div>            
-                    <div class="form-group">
-                    <label>Customer</label>
-                    <select ng-model="invoice.customerId" class="form-control"
-                            ng-options="customer.id as customer.name for customer in customers"></select>
-                     </div>
-                    <div class="form-group">
-                    <label>Sub-total</label><input type="number" class="form-control" ng-model="invoice.subtotal"/>
-                    </div>
-                    <div class="form-group">
-                    <label>Vat-Amount</label><input type="number" class="form-control" ng-model="invoice.vatAmount"/>
-                    </div>           
-                    <div class="form-group">
-                    <label>Total</label><input type="number" class="form-control" ng-model="invoice.total"/>
-                    </div>           
-    
+        		 <form role="form">
+						<div class="form-group">
+						<label class="hidden">ID</label><input type="hidden" class="form-control" ng-model="invoice.id"
+						   ng-disabled="invoice.id"/>
+						</div>
+						<div class="form-group">
+						<label>Invoice No</label><input type="text" class="form-control" ng-model="invoice.invoiceNo"/>
+						</div> 
+						<div class="form-group">
+						<label>Customer</label>
+						<select ng-model="invoice.customerId" class="form-control"
+								ng-options="customer.id as customer.name for customer in customers"></select>
+						</div>
+						<div class="form-group">
+						<label>Date</label><input type="date" class="form-control" ng-model="invoice.price"/>
+						</div>
+						<div class="form-group">
+						<label>Agent</label>
+						<select ng-model="invoice.agentId" class="form-control"
+								ng-options="agent.id as agent.name for agent in agents"></select>
+						</div>
+						<div class="form-group">
+						<label>Vat</label><input type="number" class="form-control" ng-model="invoice.vat"/>
+						</div>
+						<div class="form-group">
+						<label>Shipped On</label><input type="date" class="form-control" ng-model="invoice.shippedOn"/>
+						</div>
+						<div class="form-group">
+						<label>Shipper</label>
+						<select ng-model="invoice.shipperId" class="form-control"
+								ng-options="shipper.id as shipper.name for shipper in shippers"></select>
+						</div>
+						<div class="form-group">
+						<label>Shipping</label><input type="number" class="form-control" ng-model="invoice.shipping"/>
+						</div>  
 
+						<div class="form-group">
+						<label>Status</label><input type="text" class="form-control" ng-model="invoice.status"/>
+						</div>
+						
+						<div>
+						<div class="pull-left">Shipping:</div><div class="pull-right"><b>{{ invoice.shipping | number:2 }}</b></div>
+						<div style="clear:both"></div>
+						<div class="pull-left">Subtotal:</div><div class="pull-right"><b>{{ invoice.subTotal | number:2 }}</b></div>
+						<div style="clear:both"></div>
+						<div class="pull-left">VAT amount:</div><div class="pull-right"><b>{{ invoice.vatAmount | number:2 }}</b></div>
+						<div style="clear:both"></div>
+						<div class="pull-left">Invoice total:</div><div class="pull-right"><b>{{ invoice.total | number:2 }}</b></div>
+            			</div>
 				</form>
+             			<div ng-show="invoice.id">
+						<hr>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-4">Product</div>
+							<div class="col-md-1">Quantity</div>
+							<div class="col-md-1">Unit</div>
+							<div class="col-md-1">Price</div>
+							<div class="col-md-2 text-right">Subtotal</div>
+						</div>
+						<hr>
+						<div ng-repeat="item in invoice.items" class="row grid-i">
+							<div class="col-md-1"></div>
+							<div class="col-md-4">
+								<input type="text" ng-model="item.product" size="30">
+							</div>
+							<div class="col-md-1">
+								<input ng-model="item.quantity" size="5" type="text" />
+							</div>
+							<div class="col-md-1">
+								{{ item.unit }}
+							</div>
+							<div class="col-md-1">
+								<input ng-model="item.price" size="5" type="text" />
+							</div>
+							<div class="col-md-2 text-right">
+								<b>{{ item.subTotal | number:2 }}</b>
+							</div>
+							<div class="col-md-2">
+								<div class="pull-left"><button type="button" ng-click="saveItem(item)" class="btn btn-xs btn-success">+</button></div>
+								<div class="pull-right"><button type="button" ng-click="removeItem(item)" class="btn btn-xs btn-danger">-</button></div>
+							</div>
+						</div>
+						<div class="row grid-i">
+							<div class="col-md-1"></div>
+							<div class="col-md-4">
+							
+								<input type="text" ng-model="selectedProduct" placeholder="Enter product" size="30"
+									   typeahead="product as product.id for product in getProducts($viewValue)">
+							</div>
+							<div class="col-md-1">
+								<input ng-model="newItem.quantity" size="5" type="text" />
+							</div>
+							<div class="col-md-1">
+								{{ newItem.unit }}
+							</div>
+							<div class="col-md-1">
+								<input ng-model="newItem.price" size="5" type="text" />
+							</div>
+							<div class="col-md-2 text-right">
+								<b>{{ newItem.subTotal | number:2 }}</b>
+							</div>
+							<div class="col-md-2">
+								<div class="pull-left"><button type="button" ng-click="saveItem(newItem)" class="btn btn-xs btn-success">+</button></div>
+							</div>
+						</div>
+        		</div>
+             		
               </div>
 			    
 			    

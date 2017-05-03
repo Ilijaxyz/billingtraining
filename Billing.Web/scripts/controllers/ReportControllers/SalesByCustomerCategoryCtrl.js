@@ -5,13 +5,11 @@
             startDate: new Date(2016,1,1),
             endDate: new Date(2017,1,1)
         };
-
-
         $scope.save = function () {
             console.log("listing" + $scope.requestModel);
             DataService.insert("CustomersByCategory", $scope.requestData, function (data) {
                 $scope.salesByCustomerCategorydata = data;
-                console.log(data);
+                //console.log(data);
                 $scope.showCustomerCategory = true;
             });
         }
