@@ -12,21 +12,21 @@ namespace Billing.Api.Controllers
     public class CustomersController : BaseController
     {
         [Route("")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get()
         {
             return Ok(UnitOfWork.Customers.Get().ToList().Select(x => Factory.Create(x)).ToList());
         }
 
         [Route("{name}")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get(string name)
         {
             return Ok(UnitOfWork.Customers.Get().Where(x => x.Name.Contains(name)).ToList().Select(a => Factory.Create(a)).ToList());
         }
 
         [Route("{id:int}")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get(int id)
         {
             try
@@ -49,7 +49,7 @@ namespace Billing.Api.Controllers
         }
 
         [Route("")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Post(CustomerModel model)
         {
             try
@@ -67,7 +67,7 @@ namespace Billing.Api.Controllers
         }
 
         [Route("{id}")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Put(int id, CustomerModel model)
         {
             try
@@ -85,7 +85,7 @@ namespace Billing.Api.Controllers
         }
 
         [Route("{id}")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin")]
         public IHttpActionResult Delete(int id)
         {
             try

@@ -14,7 +14,7 @@ namespace Billing.Api.Controllers
     public class AgentsController : BaseController
     {
         [Route("")]
-        //[TokenAuthorization("admin,user")]
+        [TokenAuthorization("admin,user")]
         public IHttpActionResult Get()
         {
             try
@@ -30,14 +30,14 @@ namespace Billing.Api.Controllers
         }
 
         [Route("{name}")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get(string name)
         {
             return Ok(UnitOfWork.Agents.Get().Where(x => x.Name.Contains(name)).ToList().Select(a => Factory.Create(a)).ToList());
         }
 
         [Route("{id:int}")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get(int id)
         {
             try
@@ -61,7 +61,7 @@ namespace Billing.Api.Controllers
 
         // insert Agent
         [Route("")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin")]
         public IHttpActionResult Post(AgentModel model)
         {
             try
@@ -80,7 +80,7 @@ namespace Billing.Api.Controllers
 
         //update agent
         [Route("{id:int}")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin,user")]
         public IHttpActionResult Put(int id, AgentModel model)
         {
             try
@@ -99,7 +99,7 @@ namespace Billing.Api.Controllers
 
         //delete
         [Route("{id:int}")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin")]
         public IHttpActionResult Delete(int id)
         {
             try

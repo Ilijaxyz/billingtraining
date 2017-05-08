@@ -1,13 +1,15 @@
 (function(){
 
     application.controller("SuppliersCtrl", ['$scope', 'DataService',  function($scope, DataService) {
-        $scope.showSupplier = false;
+        $scope.modalShown = false;
+        //$scope.showSupplier = false;
         getTowns('');
         ListSuppliers(0);
 
         $scope.edit = function(current){
             $scope.supplier = current;
-            $scope.showSupplier = true;
+            $scope.modalShown = true;
+            //$scope.showSupplier = true;
         };
 
         $scope.save = function(){
@@ -15,12 +17,24 @@
                 DataService.insert("suppliers", $scope.supplier, function(data){ ListSuppliers($scope.currentPage - 1);} );
             else
                 DataService.update("suppliers", $scope.supplier.id, $scope.supplier, function(data){ListSuppliers($scope.currentPage - 1);});
+                 $scope.modalShown = false;
         };
         
         $scope.delete = function(current){
-            console.log(current.id);
             DataService.delete("suppliers", current.id, function(){
-                ListSuppliers();
+                swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this Supplier!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false
+                    },
+                    function() {
+                         ListSuppliers();
+                        swal("Deleted!", "Supplier has been deleted.", "success");
+                    });
             });
         };
 
@@ -31,7 +45,7 @@
                 address: "",
                 town: ""
             };
-            $scope.showSupplier = true;
+            $scope.modalShown = true;
         };
 
         function getTowns(name){

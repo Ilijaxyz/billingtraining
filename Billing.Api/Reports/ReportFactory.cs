@@ -131,5 +131,32 @@ namespace Billing.Api.Reports
             };
             return region;
         }
+        public InvoiceInfoModel Create(int Id, string InvoiceNo, DateTime Date, DateTime? ShippedOn, double Total, Status Status)
+        {
+
+            InvoiceInfoModel invoice = new InvoiceInfoModel();
+            invoice.InvoiceId = Id;
+            invoice.InvoiceNo = InvoiceNo;
+            invoice.InvoiceDate = Date;
+            invoice.ShippedOn = (ShippedOn != null) ? ShippedOn.Value : DateTime.Now;
+            invoice.InvoiceTotal = Math.Round(Total, 2);
+            invoice.InvoiceStatus = Status.ToString();
+
+            return invoice;
+        }
+        public InvoiceReviewProducts Create(int Id, string Name, double Price, int Quantity, double SubTotal, string Unit)
+        {
+
+            InvoiceReviewProducts products = new InvoiceReviewProducts()
+            {
+                ProductId = Id,
+                ProductName = Name,
+                Unit = Unit,
+                Price = Price,
+                Quantity = Quantity,
+                Subtotal = SubTotal
+            };
+            return products;
+        }
     }
 }

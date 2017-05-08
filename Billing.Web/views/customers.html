@@ -48,8 +48,8 @@
                 <th>Name</th>
                 <th>Address</th>
                 <th>Town</th>
-                <th>EDIT</th>
-                <th>DELETE</th>
+                <th admin-view>EDIT</th>
+                <th admin-view>DELETE</th>
             </tr>
         </thead>
         <tbody ng-repeat="customer in customers">
@@ -58,8 +58,8 @@
                 <td>{{ customer.name }}</td>
                 <td>{{ customer.address }}</td>
                 <td>{{ customer.town }}</td>
-                <td><button ng-click="edit(customer)" class="btn btn-warning">EDIT</button></td>
-                <td><button ng-click="delete(customer)" class="btn btn-danger">DELETE</button></td>
+                <td admin-view><button ng-click="edit(customer)" class="btn btn-warning">EDIT</button></td>
+                <td admin-view><button ng-click="delete(customer)" class="btn btn-danger">DELETE</button></td>
             </tr>
         </tbody>
     </table>

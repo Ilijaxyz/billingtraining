@@ -2,15 +2,16 @@
     var app = angular.module("Billing");
 
     var ProductsCtrl =  function ($scope, $http, DataService) {
-
-        $scope.showProducts=false;
+        $scope.modalShown = false;
+       //$scope.showProducts=false;
         ListProducts(0);
         ListCategories();
         //get all products
 
         $scope.getProduct = function (currentProduct) {
             $scope.product = currentProduct;
-            $scope.showProducts = true;
+            //$scope.showProducts = true;
+            $scope.modalShown = true;
         };
         //update or create products
         $scope.save=function()
@@ -19,14 +20,16 @@
             {
                 DataService.insert("products", $scope.product, function (data) {
                     ListProducts($scope.currentPage - 1);
-                    $scope.showProducts=false;
+                    //$scope.showProducts=false;
+                     $scope.modalShown = false;
                 });
             }
             else
             {
                 DataService.update("products", $scope.product.id, $scope.product, function (data) {
                     ListProducts($scope.currentPage - 1);
-                    $scope.showProducts=false;
+                    //$scope.showProducts=false;
+                     $scope.modalShown = false;
                 });
             }
         };
@@ -34,9 +37,22 @@
 
         $scope.deleteProduct = function (currentProduct) {
             DataService.delete("products", currentProduct.id, function (data) {
-                ListProducts();
+                    swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this Product!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false
+                    },
+                    function() {
+                         ListProducts();
+                        swal("Deleted!", "Product has been deleted.", "success");
+                    });
             });
-            $scope.showProducts = false;
+            //$scope.showProducts = false;
+             $scope.modalShown = false;
         };
         //create new
         $scope.new=function()
@@ -53,7 +69,8 @@
                     output: "",
                     inventory: ""
                 };
-            $scope.showProducts=true;
+            //$scope.showProducts=true;
+             $scope.modalShown = true;
         };
 
             //get Products by page pagginaton

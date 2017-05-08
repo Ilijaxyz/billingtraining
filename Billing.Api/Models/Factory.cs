@@ -100,6 +100,7 @@ namespace Billing.Api.Models
                 Shipping = invoice.Shipping,
                 Total = invoice.Total,
 
+
               Items = invoice.Items.Select(x => Create(x)).ToList()   
 
             };
@@ -191,9 +192,9 @@ namespace Billing.Api.Models
                 Category = product.Category.Name,
                 CategoryId = product.Category.Id,
                 Unit = product.Unit,
-                Input = product.Stock.Input,
-                Output = product.Stock.Output,
-                Inventory = product.Stock.Inventory
+                Input = (product.Stock != null) ? product.Stock.Input : 0,
+                Output = (product.Stock != null) ? product.Stock.Output : 0,
+                Inventory = (product.Stock != null) ? product.Stock.Inventory : 0
             };
         }
 
