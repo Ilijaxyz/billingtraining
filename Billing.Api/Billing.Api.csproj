@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ReportControllers\CustomersByCategoryController.cs" />
     <Compile Include="Controllers\ReportControllers\InvoiceReportController.cs" />
     <Compile Include="Controllers\ReportControllers\InvoicesReviewController.cs" />
+    <Compile Include="Controllers\ReportControllers\InvoicesReviewPopupController.cs" />
     <Compile Include="Controllers\ReportControllers\SalesByAgentsController.cs" />
     <Compile Include="Controllers\ReportControllers\SalesByCategoryController.cs" />
     <Compile Include="Controllers\ReportControllers\SalesByCustomerController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Models\ReportModels\AgentRegionModel.cs" />
     <Compile Include="Models\ReportModels\CustomersCategoryModel.cs" />
     <Compile Include="Models\ReportModels\InvoiceReportModel.cs" />
+    <Compile Include="Models\ReportModels\InvoiceReviewPopupModel.cs" />
     <Compile Include="Models\ReportModels\InvoicesReviewModel.cs" />
     <Compile Include="Models\ReportModels\SalesByProductModel.cs" />
     <Compile Include="Models\ReportModels\StockLevelModel.cs" />
@@ -253,6 +255,7 @@
     <Compile Include="Reports\AgentsByRegionReport.cs" />
     <Compile Include="Reports\CustomersByCategoryReport.cs" />
     <Compile Include="Reports\InvoiceReport.cs" />
+    <Compile Include="Reports\InvoicesReviewPopupReport.cs" />
     <Compile Include="Reports\InvoicesReviewReport.cs" />
     <Compile Include="Reports\ReportFactory.cs" />
     <Compile Include="Reports\SalesByAgentReport.cs" />
@@ -269,6 +272,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\Billing.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

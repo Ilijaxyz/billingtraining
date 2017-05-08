@@ -1,19 +1,23 @@
 ﻿using Billing.Api.Helpers;
-using Billing.Api.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
-namespace Billing.Api.Controllers
+namespace Billing.Api.Controllers.ReportControllers
 {
-    [RoutePrefix("api/stocklevel")]
-    public class StockLevelController : BaseController
+    //[TokenAuthorization("user")]
+    [RoutePrefix("api/invoicereview")]
+    public class InvoicesReviewPopupController : BaseController
     {
         [Route("{id:int}")]
         public IHttpActionResult Get(int id)
         {
             try
             {
-                return Ok(Reports.StockLevel.Report(id));
+                return Ok(Reports.InvoiceReviewPopup.Report(id));
             }
             catch (Exception ex)
             {
@@ -23,4 +27,5 @@ namespace Billing.Api.Controllers
         }
     }
 }
+
 

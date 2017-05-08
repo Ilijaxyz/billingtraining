@@ -1,6 +1,8 @@
 ﻿using Billing.Api.Models;
+using Billing.Api.Models.ReportModels;
 using Billing.Database;
 using Billing.Repository;
+using System;
 using System.Linq;
 
 namespace Billing.Api.Reports
@@ -9,38 +11,23 @@ namespace Billing.Api.Reports
     {
         public InvoicesReviewReport(UnitOfWork unitOfWork) : base(unitOfWork) { }
 
-        public InvoicesReviewModel Report(RequestModel request)
+        public InvoicesReviewModel Report(RequestModel Request)
         {
-            Customer customer = UnitOfWork.Customers.Get(request.Id);
+            if (Request.EndDate <= Request.StartDate) throw new Exception("Incorrect Date");
+            var Invoices = UnitOfWork.Invoices.Get()
+                                    .Where(x => x.Date >= Request.StartDate && x.Date <= Request.EndDate
+                                                                            && x.Customer.Id == Request.Id).ToList();
+            Customer Customer = UnitOfWork.Customers.Get(Request.Id);
+            double GrandTotal = Math.Round(Invoices.Sum(x => x.Total), 2);
             InvoicesReviewModel result = new InvoicesReviewModel()
             {
-                StartDate = request.StartDate,
-                EndDate = request.EndDate,
-                CustomerId = customer.Id,
-                CustomerName = customer.Name,
-                GrandTotal = customer.Invoices.Sum(x => x.Total)
+                CustomerId = Request.Id,
+                CustomerName = Customer.Name,
+                StartDate = Request.StartDate,
+                EndDate = Request.EndDate,
+                GrandTotal = Math.Round(Invoices.Sum(x => x.SubTotal), 2)
             };
-
-            result.Invoices = customer.Invoices.OrderBy(x => x.Date).ToList()
-                                      .Select(x => new InvoicesReviewModel.InvoiceModel()
-                                      {
-                                          InvoiceNo = x.InvoiceNo,
-                                          CustomerName = x.Customer.Name,
-                                          InvoiceDate = x.Date,
-                                          InvoiceStatus = x.Status.ToString(),
-                                          Subtotal = x.SubTotal,
-                                          VatAmount = x.VatAmount,
-                                          Shipping = x.Shipping,
-                                          Shipper = (x.Shipper == null) ? " " : x.Shipper.Name,
-                                          ShippedOn = x.ShippedOn,
-                                          Items = x.Items.Select(y => new InvoicesReviewModel.ItemModel()
-                                          {
-                                              ProductName = y.Product.Name,
-                                              Quantity = y.Quantity,
-                                              Price = y.Price,
-                                              Subtotal = y.SubTotal
-                                          }).ToList()
-                                      }).ToList();
+            result.InvoiceInfo = Invoices.Select(x => Factory.Create(x.Id, x.InvoiceNo, x.Date, x.ShippedOn, x.SubTotal, x.Status)).ToList();
 
             return result;
         }

@@ -24,9 +24,20 @@
             });
         };
         $scope.delete = function (currentInvoice) {
-            console.log(currentInvoice.id);
             DataService.delete("invoices", currentInvoice.id, function (data) {
-                ListInvoices();
+                  swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this Invoice!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false
+                    },
+                    function() {
+                        ListInvoices();
+                        swal("Deleted!", "Invoice has been deleted.", "success");
+                    });
             });
         };
         $scope.new = function () {

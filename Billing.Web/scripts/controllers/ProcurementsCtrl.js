@@ -3,8 +3,8 @@
 	var ProcurementsCtrl = function($scope,$http,DataService){
 		$scope.showProcurements=false;
 		ListProcurements(0);
-        ListProducts();
-        ListSuppliers();
+        ListProducts('');
+        ListSuppliers('');
 		
 		$scope.getProcurement = function (currentProcurement) {
             $scope.procurement = currentProcurement;
@@ -29,9 +29,20 @@
             }
         };
 		 $scope.deleteProcurement = function (currentProcurement) {
-
             DataService.delete("procurements", currentProcurement.id, function (data) {
-                ListProcurements();
+                swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this Procurement!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false
+                    },
+                    function() {
+                        ListProcurements();
+                        swal("Deleted!", "Procurement has been deleted.", "success");
+                    });
             });
             $scope.showProcurements = false;
         };
@@ -84,13 +95,13 @@
 		
 		function ListProducts() {
             DataService.list("products", function (data) {
-                $scope.products = data
+                $scope.products = data;
             });
         };
 		 function ListSuppliers() {
 
             DataService.list("suppliers", function (data) {
-                $scope.suppliers = data
+                $scope.suppliers = data;
             });
 
         };

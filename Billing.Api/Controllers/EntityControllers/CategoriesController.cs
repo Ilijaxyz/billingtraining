@@ -12,14 +12,14 @@ namespace Billing.Api.Controllers
     public class CategoriesController : BaseController
     {
         [Route("")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get()
         {
             return Ok(UnitOfWork.Categories.Get().ToList().Select(x => Factory.Create(x)).ToList());
         }
 
         [Route("{id:int}")]
-        //[TokenAuthorization("user,admin")]
+        [TokenAuthorization("user,admin")]
         public IHttpActionResult Get(int id)
         {
             try
@@ -49,7 +49,7 @@ namespace Billing.Api.Controllers
 
         //Insert
         [Route("")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin")]
         public IHttpActionResult Post(CategoryModel model)
         {
             try
@@ -68,7 +68,7 @@ namespace Billing.Api.Controllers
 
         //Update
         [Route("{id}")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin")]
         public IHttpActionResult Put(int id, CategoryModel model)
         {
             try
@@ -87,7 +87,7 @@ namespace Billing.Api.Controllers
 
         //Delete
         [Route("{id}")]
-        //[TokenAuthorization("admin")]
+        [TokenAuthorization("admin")]
         public IHttpActionResult Delete(int id)
         {
             try

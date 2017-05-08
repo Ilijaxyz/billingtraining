@@ -21,10 +21,21 @@
             $scope.modalShown = false;
         };
         $scope.delete = function (currentCustomer) {
-          console.log(currentCustomer.id);  
           DataService.delete("customers", currentCustomer.id, function (data) {
-              ListCustomers(); 
-          })
+                    swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this Customer!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false
+                    },
+                    function() {
+                        ListCustomers();
+                        swal("Deleted!", "Customer has been deleted.", "success");
+                    });
+          });
         };
         $scope.new = function(){
             console.log("adding customer");
