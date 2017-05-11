@@ -1,1 +1,3 @@
 2017-05-10 09:41:25,588 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/categories/11
+2017-05-11 16:02:32,643 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/items
+2017-05-11 16:07:25,803 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/items
