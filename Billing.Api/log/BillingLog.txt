@@ -1,1 +1,1 @@
-2017-05-08 09:06:13,075 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-10 09:41:25,588 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/categories/11

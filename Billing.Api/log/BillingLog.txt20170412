@@ -1,6 +1,0 @@
-2017-04-11 10:19:04,458 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:30:25,786 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:34:28,226 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:36:34,134 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 10:36:59,038 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers
-2017-04-11 23:37:19,237 | ERROR | Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.: http://localhost:59959/api/customers

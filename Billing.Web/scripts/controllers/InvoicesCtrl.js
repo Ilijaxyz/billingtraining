@@ -1,20 +1,32 @@
 
 (function () {
-    application.controller("InvoicesCtrl", ['$scope', 'DataService', function ($scope, DataService) {
+    application.controller("InvoicesCtrl", ['$scope', 'DataService', '$http', function ($scope, DataService, $http) {
 
         $scope.shownInvoices = false;
-        //$scope.showInvoice = false;
+        $scope.showInvoices = false;
         ListInvoices(0);
         ListAgents();
         ListCustomers();
         ListShipper();
+		$scope.states=[ "Canceled", "OrderCreated", "OrderConfirmed", "InvoiceCreated", "InvoiceSent", "InvoicePaid", "OnHold", "Ready", "Shipped" ];
+
+         $scope.mailData = {
+            invoiceId: 0,
+            mailTo: ""
+        };
         
         $scope.edit = function (currentInvoice) {
             $scope.invoice = currentInvoice;
             $scope.shownInvoices = true;
-            //$scope.showInvoice = true;
         };
 
+        //invoice report function for info button
+        $scope.info = function(invoice) {
+            DataService.read("invoicereport", invoice.id, function(data) { $scope.invoicesData = data; })
+            $scope.showInvoices = true;
+        };
+        //end of the invoice report function
+     
         $scope.save = function () {
             if ($scope.invoice.id == 0) DataService.insert("invoices", $scope.invoice, function (data) {
                 ListInvoices($scope.currentPage - 1); 
@@ -83,7 +95,24 @@
                     return total;
                 }
         };
-        
+         $scope.printDiv = function(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var popupWin = window.open('', '_blank', 'width=1000,height=1000');
+            popupWin.document.open();
+            popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" /><link rel="stylesheet" type="text/css" href="styles/style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+            popupWin.document.close();
+        };
+
+         $scope.saveAsPdf = function(id) {
+            DataService.download(id);
+        };
+
+          $scope.send = function(invoiceId) {
+            $scope.mailData.invoiceId=invoiceId;
+            DataService.insert("invoices/mail", $scope.mailData, function(data) {
+            swal("Success!", "Your email is sent to given address!", "success") 
+            });
+        }
             function getTowns(name){
                 DataService.list("towns/" + name, function(data){
                     $scope.towns = data;
@@ -97,7 +126,6 @@
                 $scope.currentPage = data.currentPage + 1;
                 $scope.pages = new Array($scope.totalPages);
                 for (var i=0; i<$scope.totalPages; i++) $scope.pages[i] = i+1;
-                    console.log($scope.currentPage);
             });
         }
         $scope.goto = function(page){

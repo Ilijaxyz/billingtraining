@@ -37,7 +37,7 @@
             });
         };
 
-/*   $scope.new = function() {
+  $scope.new = function() {
             swal({
                     title: "Add new Category",
                     text: "Insert a new Category:",
@@ -55,25 +55,15 @@
                         return false
                     }
                     console.log(inputValue);
-                    $scope.category = {
+                    $scope.categorie = {
                         id: 0,
                         name: inputValue
                     }
                     $scope.save();
-                    swal("Nice!", "You added a new category", "success");
-                    s
+                    swal("Nice!", "You added a new category", "success");    
                 });
-            //DataService.insert("categories", $scope.category, function(data){ ListCategories();} );
-            $scope.showCategories = true;
-        }; */
-        $scope.new = function(){
-            $scope.categorie = {
-                id: 0,
-                name: "",
-            };
-            $scope.modalShown=true;
-            //$scope.showCategorie = true;
-        };
+            $scope.showCategorie = true;
+        }; 
 
         function ListCategories(){
             DataService.list("categories", function(data){ $scope.categories = data});

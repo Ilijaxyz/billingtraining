@@ -158,5 +158,20 @@ namespace Billing.Api.Reports
             };
             return products;
         }
+
+        public InvoiceProductReport Create(int Id, string Name, string Unit, double Price, int Quantity, double SubTotal)
+        {
+
+            InvoiceProductReport products = new InvoiceProductReport()
+            {
+                ProductId = Id,
+                ProductName = Name,
+                ProductUnit = Unit,
+                Price = Price,
+                Quantity = Quantity,
+                Subtotal = SubTotal
+            };
+            return products;
+        }
     }
 }

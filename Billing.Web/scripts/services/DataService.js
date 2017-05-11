@@ -54,6 +54,18 @@
                     });
             },
 
+            //function for download pdf
+             download: function(id) {
+                    $http.get(source + '/invoices/download/' + id, { responseType: 'arraybuffer' })
+                        .success(function (data) {
+                            var blob = new Blob([data], {
+                                type: "application/pdf"
+                            });
+                            //saveAs provided by FileSaver.min.js
+                            saveAs(blob, "Invoice-" + id + "-" + (Math.floor(new Date()).toString()) + '.pdf');
+                        });
+                },
+
             delete: function(dataSet, id, callback) {
                 $http({ method:"delete", url:source + dataSet + "/" + id })
                     .success(function() {

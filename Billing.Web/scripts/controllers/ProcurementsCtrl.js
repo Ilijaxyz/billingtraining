@@ -8,6 +8,7 @@
 		
 		$scope.getProcurement = function (currentProcurement) {
             $scope.procurement = currentProcurement;
+            console.log(procurement);
             $scope.showProcurements = true;
         };
 		
