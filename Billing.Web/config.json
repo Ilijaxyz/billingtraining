@@ -1,5 +1,5 @@
 {
-  "source": "http://api-alpha.gigischool.com/api/",
+  "source": "http://localhost:59959/api/",
   "regions": [ "Banja Luka", "Bihac", "Doboj", "Mostar", "Sarajevo", "Trebinje", "Tuzla", "Zenica" ],
   "states": [ "Canceled", "OrderCreated", "OrderConfirmed", "InvoiceCreated", "InvoiceSent", "InvoicePaid", "OnHold", "Ready", "Shipped" ],
   "signature": "+jL4gEGBnpMrhaDETCiJjo56i0LTW5Jco1dncoSRNf4=",
