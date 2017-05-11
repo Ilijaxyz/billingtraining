@@ -21,7 +21,7 @@ namespace Billing.Api.Reports
         private AgentsByRegionReport _agentsByRegion;
         private CustomersByCategoryReport _customersByCategory;
         private InvoicesReviewReport _invoicesReview;
-        private InvoiceReport _invoice;
+        private InvoicesReport _invoice;
         private StockLevelReport _stocklevel;
         private SalesByProductReport _salesByProduct;
         private SalesByAgentReport _salesByAgent;
@@ -35,7 +35,7 @@ namespace Billing.Api.Reports
         public AgentsByRegionReport AgentsByRegion { get { return _agentsByRegion ?? (_agentsByRegion = new AgentsByRegionReport(_unitOfWork)); } }
         public CustomersByCategoryReport CustomersByCategory { get { return _customersByCategory ?? (_customersByCategory = new CustomersByCategoryReport(_unitOfWork)); } }
         public InvoicesReviewReport InvoicesReview { get { return _invoicesReview ?? (_invoicesReview = new InvoicesReviewReport(_unitOfWork)); } }
-        public InvoiceReport Invoice { get { return _invoice ?? (_invoice = new InvoiceReport(_unitOfWork)); } }
+        public InvoicesReport Invoice { get { return _invoice ?? (_invoice = new InvoicesReport(_unitOfWork)); } }
         public StockLevelReport StockLevel { get { return _stocklevel ?? (_stocklevel = new StockLevelReport(_unitOfWork)); } }
         public SalesByProductReport SalesByProduct { get { return _salesByProduct ?? (_salesByProduct = new SalesByProductReport(_unitOfWork)); } }
         public SalesByAgentReport SalesByAgent { get { return _salesByAgent ?? (_salesByAgent = new SalesByAgentReport(_unitOfWork)); } }

@@ -19,6 +19,7 @@ namespace Billing.Api.Reports
             if (Invoice == null) throw new Exception("Invoice not found");
             InvoiceReviewPopupModel result = new InvoiceReviewPopupModel
             {
+                InvoiceId=Invoice.Id,
                 InvoiceNo = Invoice.InvoiceNo,
                 CustomerName = (Invoice.Customer == null) ? "" : Invoice.Customer.Name,
                 InvoiceDate = Invoice.Date,

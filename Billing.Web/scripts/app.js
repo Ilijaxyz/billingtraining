@@ -37,6 +37,7 @@
             .when("/CustomersByCategory",{templateUrl:"views/Reports/salesbycustomercategory.html",controller:"SalesByCustomerCategoryCtrl"})
             .when("/Dashboard",{templateUrl:"views/Reports/dashboard.html",controller:"DashboardCtrl"})
             .when("/StockLevel",{templateUrl:"views/Reports/stocklevel.html",controller:"StockLevelCtrl"})
+            .when("/InvoicesReview",{templateUrl:"views/Reports/invoicesreview.html",controller:"InvoicesReviewCtrl"})
             //end reports
             .when("/procurements", { templateUrl: "views/procurements.html", controller: "ProcurementsCtrl" })
             .when("/login", { templateUrl: "views/login.html", controller: "LoginCtrl" })

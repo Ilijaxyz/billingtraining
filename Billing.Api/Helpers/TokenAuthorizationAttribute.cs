@@ -32,7 +32,7 @@ namespace Billing.Api.Helpers
                     AuthToken token = unitOfWork.Tokens.Get().FirstOrDefault(x => x.Token == Token);
                     if (token != null)
                     {
-                        if (token.ApiUser.AppId == ApiKey && token.Expiration > DateTime.UtcNow)
+                        if (token.ApiUser.AppId == ApiKey && token.Expiration > DateTime.Now) //utc uklonjeno za deploy error 401 unauthorized
                         {
                             BillingIdentity.Agent = token.Agent;
                             foreach (string role in _roles)
