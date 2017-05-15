@@ -2,7 +2,7 @@
 	application.controller("InvoicesCtrl", ['$scope', 'DataService', '$http', function ($scope, DataService, $http) {
 
 		$scope.shownInvoices = false;
-		$scope.showInvoices = false;
+		
 		ListInvoices(0);
 		ListAgents();
 		ListCustomers();
@@ -68,26 +68,22 @@
 		};
 		//ITEM PART OF CONTROLLER
 		$scope.saveItem = function (item) {
-			if (item.id == undefined) {
-				item.productId = $scope.selectedProduct.id;
-				console.log("product : " + item.productId);
+			console.log(item);
+			if (true) {
+				var new_item = {
+					id: 0,
+					invoice: "New Invoice",
+					product: item.product.name,
+					unit: item.product.unit,
+					subtotal: item.price * item.quantity,
+					productId: item.product.id,
+					invoiceId: $scope.invoice.id,
+					price: item.price,
+					quantity: item.quantity
+				};
 
-				item.invoiceId = $scope.invoice.id;
-				console.log("invoice : " + item.invoiceId);
-
-				DataService.insert("items", item, function () {
-					DataService.read("invoices", $scope.invoice.id, function (data) {
-						$scope.invoice = data;
-						$scope.newItem = {
-							productId: 0,
-							quantity: 0,
-							price: 0
-						};
-						$scope.selectedProduct = {
-							id: 0,
-							name: ""
-						};
-					})
+				DataService.insert("items", new_item, function (data) {
+					$scope.invoice.items = data;
 				});
 			} else {
 				DataService.update("items", item.id, item, function () {});
@@ -140,6 +136,12 @@
 		$scope.goto = function (page) {
 			ListInvoices(page - 1);
 		}
+		$scope.getProducts = function (str) {
+			console.log(str);
+            return $http.get('http://localhost:59959/api/products/' + str).then(function (response) {
+                return response.data;
+            });
+        }
 
 		function ListAgents(agentName) {
 			DataService.list("agents/", function (data) {

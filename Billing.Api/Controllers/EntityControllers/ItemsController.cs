@@ -80,7 +80,7 @@ namespace Billing.Api.Controllers
                 Item item = Factory.Create(model); //stvaranje novog itema
                 UnitOfWork.Items.Insert(item); //ubacivanje itema
                 UnitOfWork.Commit();            //komitanje
-                return Ok(Factory.Create(item));
+                return Ok(UnitOfWork.Invoices.Get(model.InvoiceId).Items.Select(x => Factory.Create(x)));
             }
             catch (Exception ex)
             {
