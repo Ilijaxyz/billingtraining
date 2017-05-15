@@ -1,6 +1,6 @@
 (function(){
 
-    application = angular.module("Billing", ["ngRoute", "LocalStorageModule"]);
+    application = angular.module("Billing", ["ngRoute", "LocalStorageModule", "ui.bootstrap"]);
 
     credentials = {
         token: "",

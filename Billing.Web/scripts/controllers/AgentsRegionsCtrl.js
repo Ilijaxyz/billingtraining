@@ -2,9 +2,10 @@
     application.controller("AgentsRegionsCtrl", ['$scope', '$rootScope','$anchorScroll', 'DataService', function($scope, $rootScope,$anchorScroll, DataService){
         $scope.regionlist=[ "Banja Luka", "Bihac", "Doboj", "Mostar", "Sarajevo", "Trebinje", "Tuzla", "Zenica" ];
         $scope.save=function(){
-            console.log("listing" + $scope.requestModel);
+            console.log("listing" + $scope.request);
             DataService.insert("AgentsByRegion",$scope.request,
             function(data){
+				console.log(data);
                 $scope.CrossAgentRegion=data;
                  angular.forEach(data.agents[0].sales, function(value, key) {
                     if(key != "$id") {

@@ -172,15 +172,15 @@
 									<b>{{ item.subTotal | number:2 }}</b>
 								</td>
 								<td class="col-md-1">
-									<div class="pull-right"><button type="button" ng-click="saveItem(item)" class="btn btn-xs btn-success"></button></div>
+									<div class="pull-right"><button type="button" ng-click="saveItem(item)" class="btn btn-xs btn-success">+</button></div>
 								</td>
 								<td class="col-md-1">
-									<button type="button" ng-click="removeItem(item)" class="btn btn-xs btn-danger"></button>
+									<button type="button" ng-click="removeItem(item)" class="btn btn-xs btn-danger">-</button>
 								</td>
 							</tr>
 							<tr>
 								<td class="col-md-5">
-									<input type="text" ng-model="selectedProduct" uib-typeahead="product as product.name for product in products | filter:$viewValue | limitTo:8" class="form-control">
+									<input type="text" ng-model="newItem.product" placeholder="Select Product" uib-typeahead="product as product.name for product in getProducts($viewValue)">
 								</td>
 								<td class="col-md-2">
 									<input ng-model="newItem.quantity" class = "form-control" size="5" type="text" />
@@ -195,7 +195,7 @@
 									<b>{{ newItem.subTotal | number:2 }}</b>
 								</td>
 								<td class="col-md-1">
-									<div class="pull-right"><button type="button" ng-click="saveItem(newItem)" class="btn btn-xs btn-success"></button></div>
+									<div class="pull-right"><button type="button" ng-click="saveItem(newItem)" class="btn btn-xs btn-success">+</button></div>
 								</td>
 							</tr>
 						</tbody>
